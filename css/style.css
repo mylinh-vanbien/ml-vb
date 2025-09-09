@@ -47,121 +47,54 @@ nav ul { list-style: none; display: inline-flex; gap: 18px; align-items: center;
 nav a { font-weight: 600; }
 
 /* =========================
-   Hero (FULL replacement)
-   - .wrap sẽ luôn nằm ở đáy và căn giữa ngang
-   - sử dụng flex-column + justify-content: flex-end
+   Hero
    ========================= */
-/* Hero Section */
 .hero {
   position: relative;
   width: 100%;
-  height: 100vh; /* chiếm toàn màn hình */
+  height: 100vh;                  /* full màn hình */
   background: url('your-image.jpg') no-repeat center center/cover;
   display: flex;
-  justify-content: center;  /* căn giữa ngang */
-  align-items: flex-end;    /* đẩy xuống đáy */
-  padding-bottom: 40px;     /* khoảng cách với đáy */
+  flex-direction: column;
+  justify-content: flex-end;      /* đẩy nội dung xuống đáy */
+  align-items: center;            /* căn giữa ngang */
   text-align: center;
+  overflow: hidden;
+  padding-bottom: 40px;           /* cách mép đáy */
 }
 
 /* Nội dung wrap */
 .hero .wrap {
+  width: calc(100% - 40px);
+  max-width: 1200px;
+  padding: 0 20px;
+  margin-bottom: 0;
   color: #fff;
-  max-width: 800px;
+  z-index: 10;
 }
 
-/* Tiêu đề */
-.hero h2 {
+/* Heading */
+.hero h1, .hero h2 {
   font-family: 'Great Vibes', cursive;
-  font-size: 50px;
-  margin: 10px 0;
-  line-height: 1.2;
+  font-size: 56px;
+  margin: 6px 0;
+  color: #fff;
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+  text-shadow: 0 3px 12px rgba(0,0,0,0.45);
 }
 
 /* Sub text */
 .hero p {
   font-size: 20px;
-  margin: 10px 0;
-}
-
-/* Date badge */
-.date-badge {
-  display: inline-block;
-  background: rgba(0,0,0,0.5);
-  padding: 8px 15px;
-  border-radius: 20px;
-  margin: 10px 0;
-  font-size: 16px;
-}
-
-/* Countdown */
-.countdown {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin: 20px 0;
-}
-
-.countdown .cd-box {
-  background: rgba(0,0,0,0.5);
-  padding: 15px 20px;
-  border-radius: 10px;
-  min-width: 70px;
-}
-
-.countdown .num {
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.countdown .lbl {
-  font-size: 14px;
-}
-
-.hero {
-  position: relative;
-  height: 100vh;                   /* full viewport height */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;       /* đẩy nội dung xuống đáy */
-  align-items: center;             /* căn giữa ngang */
-  overflow: hidden;
-  /* nếu bạn có background image, thay 'none' bằng url(...) center/cover no-repeat */
-  background: none;
-}
-
-/* The container that chứa tất cả text ở đáy */
-.hero .wrap {
-  width: calc(100% - 40px);
-  max-width: 1200px;
-  padding: 0 20px;
-  margin-bottom: 22px;             /* khoảng cách từ wrap tới đáy */
-  text-align: center;
-  box-sizing: border-box;
-  z-index: 10;                      /* trên background */
-  pointer-events: auto;
-}
-
-/* Text styles inside hero */
-.hero h1, .hero h2 {
-  font-family: 'Great Vibes', cursive;
-  font-size: 56px;
   margin: 6px 0;
-  color: #ffffff;
-  line-height: 1;
-  letter-spacing: -0.8px;
-  text-shadow: 0 3px 12px rgba(0,0,0,0.45);
-}
-.hero p {
-  font-size: 20px;
-  margin: 6px 0;
-  color: #ffffff;
-  line-height: 1.15;
+  color: #fff;
+  line-height: 1.3;
   letter-spacing: -0.3px;
   text-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
 
-/* small badge (date / place) */
+/* Date badge */
 .date-badge {
   display: inline-block;
   margin-top: 8px;
@@ -203,7 +136,7 @@ nav a { font-weight: 600; }
 }
 
 /* =========================
-   Sections (bên dưới hero)
+   Sections
    ========================= */
 section {
   padding: 60px 20px;
@@ -221,7 +154,7 @@ section h2 {
 footer {
   padding: 1rem;
   background-color: whitesmoke;
-  font-size: 1.0rem;
+  font-size: 1rem;
   text-align: center;
 }
 footer a {
@@ -231,13 +164,12 @@ footer a {
 footer a:hover { color: red; }
 
 /* =========================
-   Responsive tweaks
+   Responsive
    ========================= */
 @media (max-width: 992px) {
   .hero h1, .hero h2 { font-size: 44px; }
   .hero p { font-size: 18px; }
   #countdown .cd-box { min-width: 50px; padding: 7px 10px; }
-  .hero .wrap { margin-bottom: 18px; }
 }
 @media (max-width: 480px) {
   nav { height: 48px; }
@@ -245,5 +177,5 @@ footer a:hover { color: red; }
   .hero p { font-size: 16px; }
   #countdown { gap: 6px; }
   #countdown .cd-box { min-width: 44px; padding: 6px 8px; }
-  .hero .wrap { margin-bottom: 14px; width: calc(100% - 24px); padding: 0 12px; }
+  .hero .wrap { width: calc(100% - 24px); padding: 0 12px; }
 }
