@@ -1,44 +1,95 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thiệp Cưới Online</title>
-  <link rel="stylesheet" href="css/style.css">
-  <!-- Font thư pháp -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"/> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ĐT ❤ MT | Thiệp Mời Cưới</title>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
-  <div class="card">
-    <!-- Trang bên trái -->
-    <div class="card-side">
-      <img src="images/hoa-left.png" alt="Hoa trang trí" class="decor decor-left">
-      <h2 class="logo">B L</h2>
-      <h3 class="subtitle">Lễ Thành Hôn</h3>
-      <p>Của hai chúng tôi</p>
-      <p>Được tổ chức tại</p>
-      <h3 class="location">Tư Gia Nhà Trai</h3>
-      <p>Xóm 3 - Thôn Đại Trang<br>H. An Lão - TP. Hải Phòng</p>
-      <p class="time">09:30 - Chủ Nhật<br><strong>05.10.2025</strong></p>
-      <p class="note">Sự hiện diện của Quý vị là niềm vinh hạnh của gia đình chúng tôi!</p>
-    </div>
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#home">Trang chủ</a></li>
+      <li><a href="#about">Thông tin</a></li>
+      <li><a href="#schedule">Sự kiện</a></li>
+      <li><a href="#album">Album</a></li>
+      <li><a href="#rsvp">Tham dự</a></li>
+      <li><a href="#gift">Mừng cưới</a></li>
+    </ul>
+  </nav>
 
-    <!-- Trang bên phải -->
-    <div class="card-side">
-      <img src="images/hoa-right.png" alt="Hoa trang trí" class="decor decor-right">
-      <p class="invite">Trân trọng kính mời</p>
-      <h2 class="names">Mỹ Linh & Văn Biên</h2>
-      <p>Được tổ chức tại</p>
-      <h3 class="location">Tư Gia Nhà Gái</h3>
-      <p>Thôn Đồng Thịnh - X. Ninh An<br>H. Hoa Lư - TP. Ninh Bình</p>
-      <p class="time">Thứ Bảy<br><strong>04.10.2025</strong></p>
-      <p class="note">Rất hân hạnh được đón tiếp!</p>
-      <div class="qr">
-        <img src="images/qr.png" alt="QR Code" />
-        <p>Vị trí</p>
-      </div>
+  <!-- Hero & Countdown -->
+  <section id="home" class="hero">
+    <h1>Đức Thắng &amp; Minh Tuấn</h1>
+    <p>20/10/2025 • Thanh Hóa</p>
+    <div id="countdown">
+      <div><span id="dd">--</span><small>Ngày</small></div>
+      <div><span id="hh">--</span><small>Giờ</small></div>
+      <div><span id="mm">--</span><small>Phút</small></div>
+      <div><span id="ss">--</span><small>Giây</small></div>
     </div>
-  </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Us</h2>
+    <div class="person">
+      <img src="images/bride.jpg" alt="Cô dâu"/>
+      <h3>Nguyễn Minh Tuấn</h3>
+      <p>Bố: ... – Mẹ: ...</p>
+    </div>
+    <div class="person">
+      <img src="images/groom.jpg" alt="Chú rể"/>
+      <h3>Dương Đức Thắng</h3>
+      <p>Bố: ... – Mẹ: ...</p>
+    </div>
+  </section>
+
+  <!-- Schedule -->
+  <section id="schedule">
+    <h2>Our Wedding</h2>
+    <div class="event">
+      <h3>Lễ Vu Quy</h3>
+      <p>Thứ Bảy, 19/10/2025 • 07:00 – 09:00</p>
+      <a href="https://maps.app.goo.gl" target="_blank"><img src="images/map1.jpg" alt="Bản đồ"></a>
+    </div>
+    <div class="event">
+      <h3>Lễ Thành Hôn</h3>
+      <p>Chủ Nhật, 20/10/2025 • 10:30 – 15:00</p>
+      <a href="https://maps.app.goo.gl" target="_blank"><img src="images/map2.jpg" alt="Bản đồ"></a>
+    </div>
+  </section>
+
+  <!-- Album -->
+  <section id="album">
+    <h2>Album Cưới</h2>
+    <div class="gallery">
+      <img src="images/1.jpg" alt="ảnh cưới"/>
+      <img src="images/2.jpg" alt="ảnh cưới"/>
+      <img src="images/3.jpg" alt="ảnh cưới"/>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section id="rsvp">
+    <h2>Xác nhận tham dự</h2>
+    <button onclick="confirmYes()">Tham gia</button>
+    <button onclick="confirmNo()">Không tham gia</button>
+  </section>
+
+  <!-- Gift -->
+  <section id="gift">
+    <h2>Mừng cưới</h2>
+    <div class="qr-group">
+      <div><img src="images/qr1.png" alt="QR chú rể"/><p>Chú rể</p></div>
+      <div><img src="images/qr2.png" alt="QR cô dâu"/><p>Cô dâu</p></div>
+    </div>
+  </section>
+
+  <footer>©2025 Đức Thắng ❤ Minh Tuấn</footer>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
-
