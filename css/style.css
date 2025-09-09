@@ -43,19 +43,22 @@ nav a {
 }
 
 /* Hero */
+/* --- Flex approach: dùng align-items để đẩy xuống đáy --- */
 .hero {
-  position: relative;       /* để làm gốc cho absolute */
-  height: 100vh;            /* hero full màn hình */
-  background: url('hero-bg.jpg') center/cover no-repeat; /* ảnh nền hero nếu có */
+  display: flex;
+  flex-direction: column; /* cho chắc */
+  justify-content: flex-end; /* đẩy nội dung xuống đáy */
+  align-items: center;       /* căn giữa ngang */
+  height: 100vh;
+  position: relative;
 }
 
 .hero .wrap {
-  position: absolute;
-  bottom: 20px;             /* khoảng cách cách đáy */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100%;
-  text-align: center;       /* canh giữa nội dung */
+  width: calc(100% - 40px);
+  max-width: 1200px;
+  text-align: center;
+  padding: 0 20px;
+  margin-bottom: 20px; /* khoảng cách so với đáy */
 }
 
 .hero h1, 
