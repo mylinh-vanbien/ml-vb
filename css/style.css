@@ -46,27 +46,34 @@ nav a {
 .hero {
   position: relative;       /* để làm gốc cho absolute */
   height: 100vh;            /* hero full màn hình */
-  display: flex;
-  justify-content: center;  /* canh giữa ngang */
+  background: url('hero-bg.jpg') center/cover no-repeat; /* ảnh nền hero nếu có */
 }
+
 .hero .wrap {
   position: absolute;
-  bottom: 20px;             /* khoảng cách cách đáy, chỉnh số px tùy ý */
+  bottom: 20px;             /* khoảng cách cách đáy */
+  left: 50%;
+  transform: translateX(-50%);
   width: 100%;
   text-align: center;       /* canh giữa nội dung */
 }
-.hero h1 {
+
+.hero h1, 
+.hero h2 {
     font-family: 'Great Vibes', cursive;
     font-size: 60px;
     margin: 10px 0;
     color: #c07040;
+    line-height: 1.1;
 }
 .hero p {
     font-size: 1.2em;
     margin: 5px 0;
+    line-height: 1.2;
 }
 #countdown {
     display: flex;
+    justify-content: center;
     gap: 10px;
     margin-top: 20px;
 }
@@ -79,6 +86,7 @@ nav a {
 }
 #countdown .num {
     font-size: 1.5em;
+    color: #fff;
 }
 #countdown .lbl {
     font-size: 0.8em;
