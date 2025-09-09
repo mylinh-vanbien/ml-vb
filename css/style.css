@@ -44,20 +44,16 @@ nav a {
 
 /* Hero */
 .hero {
-    position: relative;
-    height: 100vh;
-    background: url('../images/green-bg.jpg') right/cover no-repeat;
-    overflow: hidden;
+  position: relative;       /* để làm gốc cho absolute */
+  height: 100vh;            /* hero full màn hình */
+  display: flex;
+  justify-content: center;  /* canh giữa ngang */
 }
 .hero .wrap {
-    position: absolute;
-    top: 50%;
-    left: 40px; /* căn trái */
-    transform: translateY(-50%);
-    color: #fff;
-    z-index: 1;
-    text-align: left;
-    max-width: 500px; /* giới hạn chiều rộng */
+  position: absolute;
+  bottom: 20px;             /* khoảng cách cách đáy, chỉnh số px tùy ý */
+  width: 100%;
+  text-align: center;       /* canh giữa nội dung */
 }
 .hero h1 {
     font-family: 'Great Vibes', cursive;
