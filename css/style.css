@@ -44,51 +44,57 @@ nav a {
 
 /* Hero */
 .hero {
-    position: relative;
-    height: 100vh;
-    background: url('../images/green-bg.jpg') right/cover no-repeat;
-    overflow: hidden;
-}
-.hero .wrap {
-    position: absolute;
-    top: 50%;
-    left: 40px; /* căn trái */
-    transform: translateY(-50%);
-    color: #fff;
-    z-index: 1;
-    text-align: left;
-    max-width: 500px; /* giới hạn chiều rộng */
-}
-.hero h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 60px;
-    margin: 10px 0;
-    color: #c07040;
-}
-.hero p {
-    font-size: 1.2em;
-    margin: 5px 0;
-}
-#countdown {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-}
-#countdown div {
-    background: rgba(0,0,0,0.5);
-    padding: 10px;
-    border-radius: 8px;
-    min-width: 60px;
-    text-align: center;
-}
-#countdown .num {
-    font-size: 1.5em;
-}
-#countdown .lbl {
-    font-size: 0.8em;
-    color: #ddd;
+  position: relative;
+  height: 100vh;
+  background: url('../images/hero-image.png') right/cover no-repeat;
+  overflow: hidden;
 }
 
+.hero .wrap {
+  position: absolute;
+  top: 50%;
+  left: 50px; /* căn từ trái 50px */
+  transform: translateY(-50%);
+  color: #fff;
+  z-index: 1;
+  text-align: left;
+  max-width: 500px;
+}
+
+.hero h1 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 60px;
+  margin: 10px 0;
+  color: #c07040;
+}
+
+.hero p, .hero .date, .hero .note {
+  font-size: 1.2em;
+  margin: 5px 0;
+}
+
+#countdown {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#countdown div {
+  background: rgba(0,0,0,0.5);
+  padding: 10px;
+  border-radius: 8px;
+  min-width: 60px;
+  text-align: center;
+}
+
+#countdown .num {
+  font-size: 1.5em;
+}
+
+#countdown small {
+  font-size: 0.8em;
+  color: #ddd;
+}
 /* Sections */
 section {
     padding: 60px 20px;
