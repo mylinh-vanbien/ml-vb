@@ -108,6 +108,21 @@ body {
   transition: color 0.3s;
 }
 .header.fixed .nav ul li a { color: #555; }
+.hero {
+  position: relative;
+  display: flex;
+  align-items: flex-end;  /* Đưa nội dung xuống đáy */
+  justify-content: center; /* Căn giữa ngang */
+  min-height: 100vh; /* Chiều cao full màn hình */
+  background: url('your-image.jpg') no-repeat center center/cover;
+  text-align: center;
+  padding: 20px;
+}
+
+.hero .wrap {
+  width: 100%;
+  max-width: 800px;
+}
 
 /* Home Section */
 .home-section {
