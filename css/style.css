@@ -1,100 +1,34 @@
-body {
-  font-family: 'Playfair Display', serif;
-  background: #e6f2ee;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-}
+body { margin:0; font-family:'Playfair Display', serif; color:#333; scroll-behavior: smooth;}
+nav { position: fixed; top:0; width:100%; background:rgba(255,255,255,0.9); padding:10px 20px; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+nav ul { display:flex; list-style:none; gap:15px; justify-content:center; margin:0; padding:0;}
+nav a { text-decoration:none; color:#333; font-weight:600;}
 
-.card {
-  display: flex;
-  background: white;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  max-width: 900px;
-  width: 100%;
-}
+.hero { height:100vh; background: url('../images/hero-bg.jpg') center/cover no-repeat; display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; color:#fff; padding:0 20px;}
+.hero h1 { font-family:'Great Vibes', cursive; font-size:3em; margin:0;}
+.hero p { margin:10px 0; font-size:18px;}
+#countdown { display:flex; gap:20px; margin-top:20px;}
+#countdown div { background:rgba(0,0,0,0.5); padding:10px; border-radius:8px; min-width:60px;}
+#countdown span { font-size:2em; display:block;}
+#countdown small { font-size:12px; color:#ddd;}
 
-.card-side {
-  flex: 1;
-  padding: 40px 20px;
-  position: relative;
-  text-align: center;
-  background: #f6fcf9;
-  border-radius: 20px;
-  margin: 10px;
-}
+section { padding:60px 20px; max-width:800px; margin:0 auto;}
+section h2 { text-align:center; margin-bottom:30px;}
 
-h2.logo {
-  font-family: 'Great Vibes', cursive;
-  font-size: 60px;
-  color: #c08040;
-  margin: 10px 0;
-}
+#about .person { display:flex; align-items:center; gap:20px; margin-bottom:20px;}
+#about img { width:100px; height:100px; object-fit:cover; border-radius:50%;}
 
-.subtitle {
-  font-family: 'Great Vibes', cursive;
-  font-size: 32px;
-  color: #a06040;
-  margin: 10px 0;
-}
+#schedule .event { margin-bottom:30px; text-align:center;}
+#schedule img { width:200px; border-radius:8px; margin-top:10px;}
 
-.names {
-  font-family: 'Great Vibes', cursive;
-  font-size: 40px;
-  color: #a06040;
-  margin: 15px 0;
-}
+.gallery { display:flex; gap:10px; flex-wrap:wrap; justify-content:center;}
+.gallery img { width:30%; border-radius:8px; object-fit:cover;}
 
-.location {
-  font-weight: 600;
-  margin: 10px 0;
-  color: #2f4f4f;
-}
+#rsvp { text-align:center;}
+#rsvp button { padding:10px 20px; margin:0 10px; border:none; border-radius:5px; font-size:16px; cursor:pointer;}
+#rsvp button:first-child { background: #4CAF50; color: #fff;}
+#rsvp button:last-child { background: #f44336; color: #fff;}
 
-.time {
-  margin: 15px 0;
-  font-size: 18px;
-}
+.qr-group { display:flex; justify-content: center; gap:30px;}
+.qr-group img { width:100px; border:2px solid #ccc; border-radius:8px;}
 
-.note {
-  font-style: italic;
-  margin-top: 20px;
-  font-size: 14px;
-}
-
-.invite {
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin: 10px 0;
-}
-
-.decor {
-  position: absolute;
-  width: 100px;
-}
-
-.decor-left {
-  top: 10px;
-  left: 10px;
-}
-
-.decor-right {
-  bottom: 10px;
-  right: 10px;
-}
-
-.qr {
-  margin-top: 20px;
-}
-
-.qr img {
-  width: 100px;
-  border: 2px solid #ccc;
-  border-radius: 10px;
-}
-
+footer { text-align:center; padding:20px; font-size:14px; background:#f0f0f0;}
