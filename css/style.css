@@ -45,13 +45,13 @@ nav a {
 /* Hero */
 .hero {
     position: relative;
-    height: 98vh;
+    height: 100vh;
     background: url('../images/green-bg.jpg') right/cover no-repeat;
     overflow: hidden;
 }
 .hero .wrap {
     position: absolute;
-    top: 50%;
+    top: 65%;
     left: 40px; /* căn trái */
     transform: translateY(-50%);
     color: #fff;
