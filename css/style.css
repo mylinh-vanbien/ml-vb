@@ -738,4 +738,13 @@ footer {
     z-index: -1;
     margin-left: -20px;
 }
+.hero .wrap {
+  position: absolute;       /* đặt nội dung lên trên ảnh */
+  top: 50%;                 /* canh dọc giữa */
+  left: 40px;               /* canh từ trái 40px, bạn có thể tăng giảm */
+  transform: translateY(-50%); /* chỉ dịch theo chiều dọc, không dịch ngang */
+  color: #fff;
+  z-index: 1;
+  text-align: left;         /* căn trái cho nội dung */
+}
 
