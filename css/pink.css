@@ -1,0 +1,31 @@
+/*pink color style*/
+.bi-box2-heart-fill,
+.gifts-section .gifts-item-inner span,
+.bi-music-note-beamed,
+.btn-1:hover,
+.bi-calendar2-heart-fill,
+.event-section .event-item-inner span,
+.story-section .story-item i,
+.story-section .story-text h3,
+.couple-section .couple i.bi-heart-fill,
+.couple-section .social-links a i,
+.couple-section .couple h3,
+.header .nav ul li a.active,
+.header .nav ul li a:hover{
+    color: #fb839e;
+}
+.gifts-section .gifts-item-inner:before,
+.bi-music-note-beamed,
+.btn-1,
+.event-section .event-item-inner:before,
+.couple-section .social-links a i,
+.couple-section .couple img{
+    border-color: #fb839e;
+}
+.bi-music-note-beamed.pause:after,
+.btn-1,
+.rsvp-section,
+.event-section,
+.couple-section .social-links a:hover i{
+    background-color: #fb839e;
+}
