@@ -270,7 +270,7 @@
     const sections=['#home','#couple','#events','#gallery','#rsvp','#gifts'].map(id=>document.querySelector(id));
     function onScroll(){const pos=window.scrollY+header.offsetHeight+20;let current=sections[0].id;for(const s of sections){if(s&&pos>=s.offsetTop)current=s.id;}document.querySelectorAll('.menu a').forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+current);});document.getElementById('topBtn').classList.toggle('show',window.scrollY>600);}
     window.addEventListener('scroll',onScroll);onScroll();
-    const target=new Date('2025-10-20T10:30:00+07:00').getTime();
+    const target=new Date('2025-10-05T10:30:00+07:00').getTime();
     const dd=document.getElementById('dd'),hh=document.getElementById('hh'),mm=document.getElementById('mm'),ss=document.getElementById('ss');
     setInterval(()=>{const now=Date.now();let d=Math.max(0,target-now);const days=Math.floor(d/86400000);d%=86400000;const hrs=Math.floor(d/3600000);d%=3600000;const mins=Math.floor(d/60000);d%=60000;const secs=Math.floor(d/1000);dd.textContent=days;hh.textContent=hrs;mm.textContent=mins;ss.textContent=secs;},1000);
     document.getElementById('topBtn').addEventListener('click',()=>smoothTo('#home'));
