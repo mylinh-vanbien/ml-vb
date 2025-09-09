@@ -2,56 +2,76 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thiệp Mời Cưới</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Thiệp Cưới Mỹ Linh & Văn Biên</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <div class="invite-card">
-    <!-- Cột trái -->
-    <div class="left">
-      <h1 class="logo">BL</h1>
-      <h2 class="title">Lễ Thành Hôn</h2>
-      <p>Của hai ... chúng tôi</p>
-      <p><strong>Được tổ chức tại</strong></p>
-      <p class="place">Tư Gia Nhà Trai</p>
-      <p>Xóm 3 - Thôn Đại Trang<br> X. Bát Trang - H. An Lão - TP. Hải Phòng</p>
-      <p><strong>Vào lúc 09 giờ 30, Chủ Nhật</strong></p>
-      <h3>05.10.2025</h3>
-      <p>Tức ngày 14 tháng 08 năm Ất Tỵ</p>
-      <p class="note">Sự hiện diện của Quý vị là niềm vinh hạnh của gia đình chúng tôi!</p>
+  <nav>
+    <ul>
+      <li><a href="#home">Trang chủ</a></li>
+      <li><a href="#about">Thông tin</a></li>
+      <li><a href="#event">Sự kiện</a></li>
+      <li><a href="#album">Album</a></li>
+      <li><a href="#rsvp">Tham dự</a></li>
+      <li><a href="#gift">Mừng cưới</a></li>
+    </ul>
+  </nav>
+
+  <section id="home" class="hero">
+    <h1>Welcome to our wedding</h1>
+    <h2>Mỹ Linh & Văn Biên</h2>
+    <p>04.10.2025 • Ninh Bình</p>
+    <div id="countdown">
+      <div><span id="dd">--</span><small>Ngày</small></div>
+      <div><span id="hh">--</span><small>Giờ</small></div>
+      <div><span id="mm">--</span><small>Phút</small></div>
+      <div><span id="ss">--</span><small>Giây</small></div>
     </div>
+  </section>
 
-    <!-- Cột phải -->
-    <div class="right">
-      <p class="top">TRÂN TRỌNG KÍNH MỜI</p>
-      <p>Tới dự bữa cơm thân mật chung vui cùng gia đình chúng tôi</p>
-      <h2 class="names">Mỹ Linh & Văn Biên</h2>
-      <p><strong>Được tổ chức tại</strong></p>
-      <p class="place">Tư Gia Nhà Gái</p>
-      <p>Thôn Đông Thịnh - X. Ninh An<br>H. Hoa Lư - TP. Ninh Bình</p>
-      <p><strong>Vào lúc ... , Thứ Bảy</strong></p>
-      <h3>04.10.2025</h3>
-      <p>Tức ngày 13 tháng 08 năm Ất Tỵ</p>
-      <p class="note">Rất hân hạnh được đón tiếp!</p>
+  <section id="about">
+    <h2>About Us</h2>
+    <div class="person"><img src="images/bride.jpg" alt="Cô dâu"><h3>Mỹ Linh</h3></div>
+    <div class="person"><img src="images/groom.jpg" alt="Chú rể"><h3>Văn Biên</h3></div>
+  </section>
 
-      <div class="family">
-        <div>
-          <p><strong>Nhà Gái</strong></p>
-          <p>Ông: Phạm Văn Bằng<br>Bà: Đào Thị Tuối</p>
-        </div>
-        <div>
-          <p><strong>Nhà Trai</strong></p>
-          <p>Ông: Vũ Văn Tuyên<br>Bà: Cao Thị Phúc</p>
-        </div>
-      </div>
-
-      <div class="qr">
-        <img src="qr.png" alt="QR Code">
-        <p>Vị trí</p>
-      </div>
+  <section id="event">
+    <h2>Our Wedding</h2>
+    <div class="event-block">
+      <h3>Lễ Thành Hôn</h3>
+      <p>Chủ Nhật, 05.10.2025 • 09:30</p>
+      <a href="#"><img src="images/map1.jpg" alt="Bản đồ"></a>
     </div>
-  </div>
+    <div class="event-block">
+      <h3>Tiệc Cưới</h3>
+      <p>Sau đó tại tư gia nhà gái</p>
+      <a href="#"><img src="images/map2.jpg" alt="Bản đồ"></a>
+    </div>
+  </section>
+
+  <section id="album">
+    <h2>Album Cưới</h2>
+    <div class="gallery">
+      <img src="images/1.jpg" alt="ảnh cưới">
+      <img src="images/2.jpg" alt="ảnh cưới">
+      <img src="images/3.jpg" alt="ảnh cưới">
+    </div>
+  </section>
+
+  <section id="rsvp">
+    <h2>Xác nhận tham dự</h2>
+    <button onclick="alert('Cảm ơn đã xác nhận!')">Tham gia</button>
+    <button onclick="alert('Rất tiếc bạn không thể đến.')">Không tham gia</button>
+  </section>
+
+  <section id="gift">
+    <h2>Mừng cưới</h2>
+    <img src="images/qr.png" alt="QR Mừng cưới">
+  </section>
+
+  <footer>© 2025 Mỹ Linh & Văn Biên</footer>
+  <script src="js/main.js"></script>
 </body>
 </html>
