@@ -223,26 +223,31 @@
   </section>
 
   <!-- RSVP -->
-  <section id="rsvp" style="background:#f7f7f7;">
-    <div class="container" style="max-width:600px;">
-      <h2 style="text-align:center;font-family:'Playfair Display',serif;font-size:32px;margin-bottom:30px;">Xác nhận tham dự</h2>
-
-      <form id="rsvpForm" style="display:flex;flex-direction:column;gap:15px;">
-        <input type="text" name="fullname" placeholder="Họ và tên" required>
-        <input type="tel" name="phone" placeholder="Số điện thoại" required>
-        <select name="attend" required>
-          <option value="">Xác nhận tham gia</option>
-          <option value="yes">Tham gia</option>
-          <option value="no">Không tham gia</option>
-        </select>
-        <textarea name="message" placeholder="Lời chúc" rows="4"></textarea>
-
-        <button id="submitBtn" type="submit" class="btn"><i class="bi bi-send"></i> Gửi</button>
-        <p id="msg" style="text-align:center;color:green;font-weight:500;margin:0;"></p>
-      </form>
-    </div>
-  </section>
-
+  <section id="rsvp" style="background:#f7f7f7;padding:80px 0;">
+  <div class="container" style="max-width:600px;margin:auto;">
+    <h2 style="text-align:center;font-family:'Playfair Display',serif;font-size:32px;margin-bottom:30px;">Xác nhận tham dự</h2>
+    
+    <form style="display:flex;flex-direction:column;gap:15px;">
+      <input type="text" placeholder="Họ và tên" required style="padding:12px 15px;border:1px solid #ccc;border-radius:8px;">
+      <input type="tel" placeholder="Số điện thoại" required style="padding:12px 15px;border:1px solid #ccc;border-radius:8px;">
+      
+      <select required style="padding:12px 15px;border:1px solid #ccc;border-radius:8px;">
+        <option value="">Xác nhận tham gia</option>
+        <option value="yes">Tham gia</option>
+        <option value="no">Không tham gia</option>
+      </select>
+      
+      <textarea placeholder="Lời chúc" rows="4" style="padding:12px 15px;border:1px solid #ccc;border-radius:8px;"></textarea>
+      
+      <!-- Nút gửi Zalo -->
+      <a href="https://zalo.me/0762388596" target="_blank" 
+         style="display:block;text-align:center;background:#d63384;color:#fff;padding:14px;border-radius:30px;
+                font-size:18px;font-weight:600;text-decoration:none;">
+        <i class="bi bi-send"></i> Gửi qua Zalo
+      </a>
+    </form>
+  </div>
+</section>
   <!-- Gifts -->
   <section id="gifts">
     <div class="container">
