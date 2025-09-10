@@ -4,11 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Thiệp cưới | Mỹ Linh ❤ Văn Biền</title>
+  <meta name="description" content="Thiệp cưới Mỹ Linh & Văn Biền — Thông tin, sự kiện, album và xác nhận tham dự.">
 
-  <!-- Fonts & Icons -->
+  <!-- Fonts & Icons (all loaded from head to avoid 'nhảy font') -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <style>
@@ -16,54 +17,73 @@
       --rose:#eeb7c7; --rose-2:#f7d9e2; --dark:#333; --text:#444; --bg:#fff; --muted:#777; --primary:#d63384;
       --container:1100px; --radius:16px; --shadow:0 10px 30px rgba(0,0,0,.08);
     }
+
+    /* Basic reset / layout */
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;scroll-behavior:smooth;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial}
+    html,body{margin:0;padding:0;scroll-behavior:smooth;background:var(--bg);color:var(--text);font-family:'Inter',system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial}
     img{max-width:100%;display:block}
     a{color:inherit;text-decoration:none}
+    .container{max-width:var(--container);margin:auto;padding:0 16px}
+
+    /* Header / nav */
     .header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.9);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid #f1f1f1}
     .nav-inner{max-width:var(--container);margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 18px}
-    .brand{font-family:Playfair Display,serif;font-size:22px;font-weight:700;color:var(--primary)}
+    .brand{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--primary)}
     .menu{display:flex;gap:18px;align-items:center}
     .menu a{padding:10px 12px;border-radius:999px}
     .menu a.active,.menu a:hover{background:var(--rose-2)}
     .hamb{display:none;font-size:24px;cursor:pointer}
+
+    /* Hero */
     .hero{position:relative;min-height:60vh;display:grid;place-items:center;background:url('images/anhnen.jpg') center/cover no-repeat}
     .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,0,0,.35))}
     .hero .wrap{position:relative;z-index:1;text-align:center;color:#fff;padding:40px 16px}
-    .hero .names{font-family:Playfair Display,serif;font-size:46px;line-height:1.2;margin:6px 0}
-    .hero p.lead{opacity:.95;font-size:18px;margin:6px 0 18px}
-    .date-badge{display:inline-block;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35)}
+    .hero .welcome{margin-bottom:10px;font-size:26px;line-height:2.6;font-family:'Playfair Display',serif}
+    .hero .names{font-family:'Great Vibes',cursive;font-size:50px;line-height:1.2;margin:6px 0}
+    .hero .lead{margin-top:10px;font-size:20px;color:#fff;line-height:2}
+
+    .date-badge{display:inline-block;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);margin:6px 0}
+
+    /* Countdown */
     .countdown{display:flex;gap:12px;justify-content:center;margin-top:18px}
     .cd-box{min-width:70px;padding:10px 8px;border-radius:12px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35)}
     .cd-box .num{font-size:24px;font-weight:700}
     .cd-box .lbl{font-size:12px;opacity:.9}
+
+    /* Sections */
     section{padding:72px 16px}
-    .container{max-width:var(--container);margin:auto}
-    .section-title{font-family:Playfair Display,serif;font-size:32px;text-align:center;margin:0 0 24px;color:var(--dark)}
+    .section-title{font-family:'Playfair Display',serif;font-size:32px;text-align:center;margin:0 0 24px;color:var(--dark)}
     .muted{text-align:center;color:var(--muted);max-width:700px;margin:0 auto 32px}
-    .couple{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
-    .circle{width:200px;height:200px;border-radius:50%;overflow:hidden;border:6px solid var(--rose);margin:auto;box-shadow:var(--shadow)}
-    .circle img{width:100%;height:100%;object-fit:cover}
-    .timeline{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-    .event{padding:16px;border-radius:16px;background:#fff;box-shadow:var(--shadow);border:1px solid #eee}
-    .event h4{margin:6px 0;font-size:20px;color:var(--primary)}
-    .event .when{color:var(--muted);font-size:14px;margin-bottom:6px}
-    .event .meta{color:var(--text);margin-bottom:10px}
+
+    /* Couple */
+    .couple-box{display:flex;align-items:center;justify-content:center;gap:60px;flex-wrap:wrap;position:relative}
+    .person{flex:1;min-width:280px;text-align:center}
+    .person .avatar{width:220px;height:220px;border:6px solid #ff7eb9;border-radius:50%;overflow:hidden;margin:0 auto}
+    .person h3{font-family:'Playfair Display',serif;font-size:26px;color:#ff5ca2;margin:18px 0 10px}
+
+    /* Events / grid */
+    .events-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px}
+    .event{background:#fff;border:3px solid #ff7eb9;border-radius:12px;padding:20px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+    .event h3{color:#ff4f92;margin-bottom:10px}
+    .event img{width:100%;border-radius:8px;margin:10px 0}
+
+    /* Gallery */
     .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-    .grid img{border-radius:12px;aspect-ratio:1/1;object-fit:cover}
-    form{display:grid;gap:12px}
-    .row{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    @media (max-width: 900px){.grid{grid-template-columns:repeat(2,1fr)}.events-grid{grid-template-columns:1fr}.couple-box{grid-template-columns:1fr}}
+    @media (max-width: 760px){.menu{display:none}.hamb{display:block}.menu.open{position:absolute;left:0;right:0;top:60px;background:#fff;border-bottom:1px solid #eee;display:flex;flex-direction:column}.hero .names{font-size:34px}}
+
+    /* Form / inputs / buttons */
     input,select,textarea{width:100%;padding:12px 14px;border:1px solid #e6e6e6;border-radius:12px;font:inherit}
     textarea{min-height:110px}
     .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border-radius:999px;background:var(--primary);color:#fff;border:none;cursor:pointer}
     .btn:disabled{opacity:.6;cursor:not-allowed}
+
+    /* Footer + floating buttons */
     footer{padding:28px 16px;border-top:1px solid #f1f1f1;text-align:center;color:var(--muted)}
     .music-btn,.top-btn{position:fixed;right:16px;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;box-shadow:var(--shadow);z-index:1001;background:#fff;color:var(--primary);border:1px solid #eee;cursor:pointer}
     .music-btn{bottom:78px}
     .top-btn{bottom:20px;opacity:0;pointer-events:none;transition:opacity .2s}
     .top-btn.show{opacity:1;pointer-events:auto}
-    @media (max-width: 900px){.grid{grid-template-columns:repeat(2,1fr)}.timeline{grid-template-columns:1fr}.couple{grid-template-columns:1fr}}
-    @media (max-width: 760px){.menu{display:none}.hamb{display:block}.menu.open{position:absolute;left:0;right:0;top:60px;background:#fff;border-bottom:1px solid #eee;display:flex;flex-direction:column}.hero .names{font-size:34px}}
   </style>
 </head>
 <body>
@@ -79,216 +99,282 @@
         <a href="#rsvp" data-link>Tham dự</a>
         <a href="#gifts" data-link>Mừng cưới</a>
       </nav>
-      <div class="hamb" id="hamb"><i class="bi bi-list"></i></div>
+      <div class="hamb" id="hamb" aria-label="Mở menu"><i class="bi bi-list"></i></div>
     </div>
   </header>
+
   <!-- Hero -->
-  <section class="hero" id="home">
-  <div class="wrap">
-    <p style="margin-bottom: 10px; font-size: 26px; color: white; line-height: 2.6;">
-      Welcome to our wedding
-    </p>
+  <section class="hero" id="home" aria-label="Hero - Trang chủ">
+    <div class="wrap container">
+      <p class="welcome">Welcome to our wedding</p>
 
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&amp;display=swap" rel="stylesheet">
+      <h1 class="names">Mỹ Linh 💕 Văn Biền</h1>
 
-    <h1 style="font-family: 'Great Vibes', cursive; font-size: 50px; color: #fff; margin: 5px 0; line-height: 1.2;">
-      Mỹ Linh 💕 Văn Biền
-    </h1>
+      <div class="date-badge" aria-hidden="true"><i class="bi bi-calendar-heart"></i> 05/10/2025 • Hải Phòng</div>
 
-    <div class="date-badge" style="margin: 5px 0; line-height: 1.2;">
-      <i class="bi bi-calendar-heart"></i> 05/10/2025 • Hải Phòng
+      <div class="countdown" id="countdown" aria-live="polite">
+        <div class="cd-box"><div class="num" id="dd">25</div><div class="lbl">Ngày</div></div>
+        <div class="cd-box"><div class="num" id="hh">7</div><div class="lbl">Giờ</div></div>
+        <div class="cd-box"><div class="num" id="mm">54</div><div class="lbl">Phút</div></div>
+        <div class="cd-box"><div class="num" id="ss">42</div><div class="lbl">Giây</div></div>
+      </div>
+
+      <p class="lead">Sự hiện diện của quý vị là niềm vinh dự của gia đình chúng tôi</p>
     </div>
+  </section>
 
-    <div class="countdown" id="countdown" style="margin: 15px 0; line-height: 1.2;">
-      <div class="cd-box"><div class="num" id="dd">25</div><div class="lbl">Ngày</div></div>
-      <div class="cd-box"><div class="num" id="hh">7</div><div class="lbl">Giờ</div></div>
-      <div class="cd-box"><div class="num" id="mm">54</div><div class="lbl">Phút</div></div>
-      <div class="cd-box"><div class="num" id="ss">42</div><div class="lbl">Giây</div></div>
-    </div>
-
-    <p style="margin-top: 10px; font-size: 20px; color: white; line-height: 2;">
-      Sự hiện diện của quý vị là niềm vinh dự của gia đình chúng tôi
-    </p>
-  </div>
-</section>
   <!-- Couple -->
-<section id="couple" style="background:#f7f7f7;padding:80px 0;">
-  <div class="container" style="max-width:1000px;margin:auto;">
-    <h2 style="text-align:center;color:#FF1493;font-family:'Playfair Display',serif;font-size:36px;margin-bottom:40px;">About Us</h2>
-    <div class="couple-box" style="display:flex;align-items:center;justify-content:center;gap:60px;flex-wrap:wrap;position:relative;">
-      <!-- Cô dâu -->
-      <div class="person" style="flex:1;min-width:280px;text-align:center;">
-        <div style="width:220px;height:220px;border:6px solid #ff7eb9;border-radius:50%;overflow:hidden;margin:0 auto;">
-          <img src="images/codau.jpg" alt="Cô dâu" style="width:100%;height:100%;object-fit:cover;">
+  <section id="couple">
+    <div class="container">
+      <h2 class="section-title">About Us</h2>
+      <div class="couple-box">
+        <div class="person">
+          <div class="avatar">
+            <img src="images/codau.jpg" alt="Cô dâu - Phạm Thị Mỹ Linh" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <h3>Phạm Thị Mỹ Linh</h3>
+          <p><a href="https://www.facebook.com/my.linh.760613" target="_blank" rel="noopener noreferrer" aria-label="Facebook cô dâu"><i class="bi bi-facebook"></i></a></p>
+          <p style="margin:4px 0;color:#444;">Bố: Phạm Văn Bằng</p>
+          <p style="margin:4px 0;color:#444;">Mẹ: Đào Thị Tươi</p>
+          <p style="margin-top:8px;font-size:15px;color:#000;"><i class="bi bi-geo-alt-fill"></i> Đông Thịnh, Ninh An, Hoa Lư, Ninh Bình</p>
         </div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:26px;color:#ff5ca2;margin:18px 0 10px;">Phạm Thị Mỹ Linh</h3>
-        <p><a href="https://www.facebook.com/my.linh.760613?mibextid=wwXIfr&rdid=gsxEx8kOZvrfqubq&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F16deSvUVZS%2F%3Fmibextid%3DwwXIfr#" target="_blank" style="display:inline-block;font-size:20px;color:#ff5ca2;"><i class="bi bi-facebook"></i></a></p>
-        <p style="margin:4px 0;color:#444;">Bố: Phạm Văn Bằng</p>
-        <p style="margin:4px 0;color:#444;">Mẹ: Đào Thị Tươi</p>
-        <p style="margin-top:8px;font-size:15px;color:#000;"><i class="bi bi-geo-alt-fill"></i> Đông Thịnh, Ninh An, Hoa Lư, Ninh Bình</p>
-      </div>
-      <!-- Icon trái tim ở giữa -->
-      <div class="heart-divider" style="position:relative;min-width:20px;">
-        <div style="width:1px;height:100%;background:#ddd;position:absolute;left:50%;top:0;"></div>
-        <div style="position:relative;z-index:1;background:#f7f7f7;padding:10px;border-radius:50%;margin:auto;display:flex;align-items:center;justify-content:center;width:40px;height:40px;color:#ff5ca2;font-size:20px;">
-          <i class="bi bi-heart-fill"></i>
+
+        <div style="min-width:20px; display:flex; align-items:center; justify-content:center;">
+          <div style="width:1px;height:100%;background:#ddd;"></div>
+          <div style="position:relative; z-index:1; background:#f7f7f7; padding:10px; border-radius:50%; margin-left:-20px; display:flex;align-items:center;justify-content:center; width:40px;height:40px;color:#ff5ca2;font-size:20px;">
+            <i class="bi bi-heart-fill"></i>
+          </div>
         </div>
-      </div>
-      <!-- Chú rể -->
-      <div class="person" style="flex:1;min-width:280px;text-align:center;">
-        <div style="width:220px;height:220px;border:6px solid #ff7eb9;border-radius:50%;overflow:hidden;margin:0 auto;">
-          <img src="images/chure.jpg" alt="Chú rể" style="width:100%;height:100%;object-fit:cover;">
+
+        <div class="person">
+          <div class="avatar">
+            <img src="images/chure.jpg" alt="Chú rể - Vũ Văn Biền" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <h3>Vũ Văn Biền</h3>
+          <p><a href="https://www.facebook.com/biencutitalhp" target="_blank" rel="noopener noreferrer" aria-label="Facebook chú rể"><i class="bi bi-facebook"></i></a></p>
+          <p style="margin:4px 0;color:#444;">Bố: Vũ Văn Tuyển</p>
+          <p style="margin:4px 0;color:#444;">Mẹ: Cao Thị Phúc</p>
+          <p style="margin-top:8px;font-size:15px;color:#000;"><i class="bi bi-geo-alt-fill"></i> Đại Trang, Bát Trang, An Lão, Hải Phòng</p>
         </div>
-        <h3 style="font-family:'Playfair Display',serif;font-size:26px;color:#ff5ca2;margin:18px 0 10px;">Vũ Văn Biền</h3>
-        <p><a href="https://www.facebook.com/biencutitalhp?locale=vi_VN" target="_blank" style="display:inline-block;font-size:20px;color:#ff5ca2;"><i class="bi bi-facebook"></i></a></p>
-        <p style="margin:4px 0;color:#444;">Bố: Vũ Văn Tuyển</p>
-        <p style="margin:4px 0;color:#444;">Mẹ: Cao Thị Phúc</p>
-        <p style="margin-top:8px;font-size:15px;color:#000;"><i class="bi bi-geo-alt-fill"></i> Đại Trang, Bát Trang, An Lão, Hải Phòng</p>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
   <!-- Events -->
-<section id="events" style="background:#ff7eb9;padding:16px 0;">
-  <div class="container" style="max-width:1100px;margin:auto;">
-    <h2 style="text-align:center;color:#fff;font-family:'Playfair Display',serif;font-size:36px;margin-bottom:40px;">Our Wedding</h2>
-    
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px;">
-      <!-- LỄ VU QUY -->
-      <div style="background:#fff;border:3px solid #ff7eb9;border-radius:12px;padding:20px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-        <h3 style="color:#ff4f92;margin-bottom:10px;">LỄ VU QUY</h3>
-        <div style="color:#444;margin-bottom:6px;"><i class="bi bi-calendar-heart"></i> Chủ Nhật, 05/10/2025 <br> (14/08 Âm lịch)</div>
-        <div style="color:#444;margin-bottom:6px;"><i class="bi bi-clock"></i> 06:00</div>
-        <div style="color:#444;margin-bottom:6px;"><i class="bi bi-geo-alt-fill"></i> Tư gia nhà gái: Đông Thịnh, Ninh An, Hoa Lư, Ninh Bình</div>
-        <img src="images/bando.jpg" alt="Bản đồ" style="width:100%;border-radius:8px;margin:10px 0;">
-        <a href="https://maps.app.goo.gl/Ti914JUcLPbpejVB9" target="_blank" style="color:#0066cc;">Bấm để mở bản đồ</a>
-        <div style="margin-top:10px;font-size:24px;color:#ff4f92;"><i class="bi bi-heart-fill"></i></div>
-      </div>
-      <!-- LỄ THÀNH HÔN -->
-      <div style="background:#fff;border:3px solid #ff7eb9;border-radius:12px;padding:20px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-        <h3 style="color:#ff4f92;margin-bottom:10px;">LỄ THÀNH HÔN</h3>
-        <div style="color:#444;margin-bottom:6px;"><i class="bi bi-calendar-heart"></i> Chủ Nhật, 05/10/2025 <br> (14/08 Âm lịch)</div>
-        <div style="color:#444;margin-bottom:6px;"><i class="bi bi-clock"></i> 09:30</div>
-        <div style="color:#444;margin-bottom:6px;"><i class="bi bi-geo-alt-fill"></i> Tư gia nhà trai: Đại Trang, Bát Trang, An Lão, Hải Phòng</div>
-        <img src="images/bando01.jpg" alt="Bản đồ" style="width:100%;border-radius:8px;margin:10px 0;">
-        <a href="https://maps.app.goo.gl/stdjmFoqYcHiXHmc9" target="_blank" style="color:#0066cc;">Bấm để mở bản đồ</a>
-        <div style="margin-top:10px;font-size:24px;color:#ff4f92;"><i class="bi bi-gift-fill"></i></div>
-      </div>
-      <!-- TIỆC CƯỚI NHÀ GÁI -->
-      <div style="background:#fff;border:3px solid #ff7eb9;border-radius:12px;padding:20px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-        <h3 style="color:#ff4f92;margin-bottom:10px;">TIỆC CƯỚI NHÀ GÁI</h3>
-        <div style="color:#444;margin-bottom:6px;"><i class="bi bi-calendar-heart"></i> Thứ Bảy, 04/10/2025 (13/08 Âm lịch)</div>
-        <div style="color:#444;margin-bottom:6px;"><i class="bi bi-clock"></i> 17:30</div>
-        <div style="color:#444;margin-bottom:6px;"><i class="bi bi-geo-alt-fill"></i> Tư gia nhà gái: Đông Thịnh, Ninh An, Hoa Lư, Ninh Bình</div>
-        <img src="images/bando.jpg" alt="Bản đồ" style="width:100%;border-radius:8px;margin:10px 0;">
-        <a href="https://maps.app.goo.gl/Ti914JUcLPbpejVB9" target="_blank" style="color:#0066cc;">Bấm để mở bản đồ</a>
-        <div style="margin-top:10px;font-size:24px;color:#ff4f92;"><i class="bi bi-cake2-fill"></i></div>
-      </div>
-      <!-- TIỆC CƯỚI NHÀ TRAI -->
-      <div style="background:#fff;border:3px solid #ff7eb9;border-radius:12px;padding:20px;text-align:center;box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-        <h3 style="color:#ff4f92;margin-bottom:10px;">TIỆC CƯỚI NHÀ TRAI</h3>
-        <div style="color:#444;margin-bottom:6px;"><i class="bi bi-calendar-heart"></i> Chủ Nhật, 05/10/2025 (14/08 Âm lịch)</div>
-        <div style="color:#444;margin-bottom:6px;"><i class="bi bi-clock"></i> 09:30</div>
-        <div style="color:#444;margin-bottom:6px;"><i class="bi bi-geo-alt-fill"></i> Tư gia nhà trai: Đại Trang, Bát Trang, An Lão, Hải Phòng</div>
-        <img src="images/bando01.jpg" alt="Bản đồ" style="width:100%;border-radius:8px;margin:10px 0;">
-        <a href="https://maps.app.goo.gl/stdjmFoqYcHiXHmc9" target="_blank" style="color:#0066cc;">Bấm để mở bản đồ</a>
-        <div style="margin-top:10px;font-size:24px;color:#ff4f92;"><i class="bi bi-cup-straw"></i></div>
+  <section id="events" style="background:#ff7eb9;">
+    <div class="container" style="max-width:1100px;">
+      <h2 style="text-align:center;color:#fff;font-family:'Playfair Display',serif;font-size:36px;margin-bottom:24px;">Our Wedding</h2>
+
+      <div class="events-grid">
+        <div class="event" aria-label="Lễ vu quy">
+          <h3>LỄ VU QUY</h3>
+          <div style="color:#444;margin-bottom:6px;"><i class="bi bi-calendar-heart"></i> Chủ Nhật, 05/10/2025 <br> (14/08 Âm lịch)</div>
+          <div style="color:#444;margin-bottom:6px;"><i class="bi bi-clock"></i> 06:00</div>
+          <div style="color:#444;margin-bottom:6px;"><i class="bi bi-geo-alt-fill"></i> Tư gia nhà gái: Đông Thịnh, Ninh An, Hoa Lư, Ninh Bình</div>
+          <img src="images/bando.jpg" alt="Bản đồ lễ vu quy">
+          <p><a href="https://maps.app.goo.gl/Ti914JUcLPbpejVB9" target="_blank" rel="noopener noreferrer" style="color:#0066cc;">Bấm để mở bản đồ</a></p>
+        </div>
+
+        <div class="event" aria-label="Lễ thành hôn">
+          <h3>LỄ THÀNH HÔN</h3>
+          <div style="color:#444;margin-bottom:6px;"><i class="bi bi-calendar-heart"></i> Chủ Nhật, 05/10/2025 <br> (14/08 Âm lịch)</div>
+          <div style="color:#444;margin-bottom:6px;"><i class="bi bi-clock"></i> 09:30</div>
+          <div style="color:#444;margin-bottom:6px;"><i class="bi bi-geo-alt-fill"></i> Tư gia nhà trai: Đại Trang, Bát Trang, An Lão, Hải Phòng</div>
+          <img src="images/bando01.jpg" alt="Bản đồ lễ thành hôn">
+          <p><a href="https://maps.app.goo.gl/stdjmFoqYcHiXHmc9" target="_blank" rel="noopener noreferrer" style="color:#0066cc;">Bấm để mở bản đồ</a></p>
+        </div>
+
+        <div class="event" aria-label="Tiệc cưới nhà gái">
+          <h3>TIỆC CƯỚI NHÀ GÁI</h3>
+          <div style="color:#444;margin-bottom:6px;"><i class="bi bi-calendar-heart"></i> Thứ Bảy, 04/10/2025 (13/08 Âm lịch)</div>
+          <div style="color:#444;margin-bottom:6px;"><i class="bi bi-clock"></i> 17:30</div>
+          <div style="color:#444;margin-bottom:6px;"><i class="bi bi-geo-alt-fill"></i> Tư gia nhà gái: Đông Thịnh, Ninh An, Hoa Lư, Ninh Bình</div>
+          <img src="images/bando.jpg" alt="Bản đồ tiệc nhà gái">
+          <p><a href="https://maps.app.goo.gl/Ti914JUcLPbpejVB9" target="_blank" rel="noopener noreferrer" style="color:#0066cc;">Bấm để mở bản đồ</a></p>
+        </div>
+
+        <div class="event" aria-label="Tiệc cưới nhà trai">
+          <h3>TIỆC CƯỚI NHÀ TRAI</h3>
+          <div style="color:#444;margin-bottom:6px;"><i class="bi bi-calendar-heart"></i> Chủ Nhật, 05/10/2025 (14/08 Âm lịch)</div>
+          <div style="color:#444;margin-bottom:6px;"><i class="bi bi-clock"></i> 09:30</div>
+          <div style="color:#444;margin-bottom:6px;"><i class="bi bi-geo-alt-fill"></i> Tư gia nhà trai: Đại Trang, Bát Trang, An Lão, Hải Phòng</div>
+          <img src="images/bando01.jpg" alt="Bản đồ tiệc nhà trai">
+          <p><a href="https://maps.app.goo.gl/stdjmFoqYcHiXHmc9" target="_blank" rel="noopener noreferrer" style="color:#0066cc;">Bấm để mở bản đồ</a></p>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
   <!-- Gallery -->
   <section id="gallery">
     <div class="container">
       <h2 class="section-title">Wedding Photo Album</h2>
       <div class="grid">
-        <img src="images/anh1.jpg" alt="">
-        <img src="images/anh2.jpg" alt="">
-        <img src="images/anh3.jpg" alt="">
-        <img src="images/anh4.jpg" alt="">
-        <img src="images/anh5.jpg" alt="">
-        <img src="images/anh6.jpg" alt="">
-        <img src="images/anh7.jpg" alt="">
-        <img src="images/anh8.jpg" alt="">
+        <img src="images/anh1.jpg" alt="Album 1">
+        <img src="images/anh2.jpg" alt="Album 2">
+        <img src="images/anh3.jpg" alt="Album 3">
+        <img src="images/anh4.jpg" alt="Album 4">
+        <img src="images/anh5.jpg" alt="Album 5">
+        <img src="images/anh6.jpg" alt="Album 6">
+        <img src="images/anh7.jpg" alt="Album 7">
+        <img src="images/anh8.jpg" alt="Album 8">
       </div>
     </div>
   </section>
+
   <!-- RSVP -->
-<section id="rsvp" style="background:#f7f7f7;padding:80px 0;">
-  <div class="container" style="max-width:600px;margin:auto;">
-    <h2 style="text-align:center;font-family:'Playfair Display',serif;font-size:32px;margin-bottom:30px;">Xác nhận tham dự</h2>
-    
-    <form style="display:flex;flex-direction:column;gap:15px;">
-      <input type="text" placeholder="Họ và tên" required style="padding:12px 15px;border:1px solid #ccc;border-radius:8px;">
-      <input type="tel" placeholder="Số điện thoại" required style="padding:12px 15px;border:1px solid #ccc;border-radius:8px;">
-      
-      <select required style="padding:12px 15px;border:1px solid #ccc;border-radius:8px;">
-        <option value="">Xác nhận tham gia</option>
-        <option value="yes">Tham gia</option>
-        <option value="no">Không tham gia</option>
-      </select>
-      
-      <textarea placeholder="Lời chúc" rows="4" style="padding:12px 15px;border:1px solid #ccc;border-radius:8px;"></textarea>
-      
-      <!-- Nút gửi Zalo -->
-      <a href="https://zalo.me/0762388596" target="_blank" 
-         style="display:block;text-align:center;background:#d63384;color:#fff;padding:14px;border-radius:30px;
-                font-size:18px;font-weight:600;text-decoration:none;">
-        <i class="bi bi-send"></i> Gửi qua Zalo
-      </a>
-    </form>
-  </div>
-</section>
-  <!-- Gifts -->
-<section id="gifts">
-  <div class="container">
-    <h2 class="section-title">Mừng cưới</h2>
-    <p class="muted">Trân trọng niềm vui chung, xin nhận lộc hồng qua QR/STK</p>
-    <div style="display:flex; gap:40px; justify-content:center; flex-wrap:wrap;">
+  <section id="rsvp" style="background:#f7f7f7;">
+    <div class="container" style="max-width:600px;">
+      <h2 style="text-align:center;font-family:'Playfair Display',serif;font-size:32px;margin-bottom:30px;">Xác nhận tham dự</h2>
 
-      <!-- Chú Rể -->
-      <div style="text-align:center;">
-        <p style="margin-bottom:5px;"><strong>Cô Dâu</strong></p>
-        <img src="images/qrcodau.jpg" alt="QR chú rể" width="220">
-      </div>
+      <form id="rsvpForm" style="display:flex;flex-direction:column;gap:15px;">
+        <input type="text" name="fullname" placeholder="Họ và tên" required>
+        <input type="tel" name="phone" placeholder="Số điện thoại" required>
+        <select name="attend" required>
+          <option value="">Xác nhận tham gia</option>
+          <option value="yes">Tham gia</option>
+          <option value="no">Không tham gia</option>
+        </select>
+        <textarea name="message" placeholder="Lời chúc" rows="4"></textarea>
 
-      <!-- Cô Dâu -->
-      <div style="text-align:center;">
-        <p style="margin-bottom:5px;"><strong>Chú Rể</strong></p>
-        <img src="images/qrchure.jpg" alt="QR cô dâu" width="220">
-      </div>
-
+        <button id="submitBtn" type="submit" class="btn"><i class="bi bi-send"></i> Gửi</button>
+        <p id="msg" style="text-align:center;color:green;font-weight:500;margin:0;"></p>
+      </form>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- Gifts -->
+  <section id="gifts">
+    <div class="container">
+      <h2 class="section-title">Mừng cưới</h2>
+      <p class="muted">Trân trọng niềm vui chung, xin nhận lộc hồng qua QR/STK</p>
+      <div style="display:flex; gap:40px; justify-content:center; flex-wrap:wrap;">
+        <div style="text-align:center;">
+          <p style="margin-bottom:5px;"><strong>Cô Dâu</strong></p>
+          <img src="images/qrcodau.jpg" alt="QR cô dâu" width="220">
+        </div>
+        <div style="text-align:center;">
+          <p style="margin-bottom:5px;"><strong>Chú Rể</strong></p>
+          <img src="images/qrchure.jpg" alt="QR chú rể" width="220">
+        </div>
+      </div>
+    </div>
+  </section>
 
   <footer>©2025 Mỹ Linh ❤ Văn Biền</footer>
 
-  <!-- Audio -->
+  <!-- Audio + floating buttons -->
   <audio id="bgm" preload="auto" loop>
     <source src="audio/Maimaibennhau-NooPhuocThinh.mp3" type="audio/mpeg" />
   </audio>
-  <button class="music-btn" id="musicBtn" title="Phát/Dừng nhạc"><i class="bi bi-music-note-beamed"></i></button>
+  <button class="music-btn" id="musicBtn" title="Phát/Dừng nhạc" aria-pressed="false"><i class="bi bi-music-note-beamed"></i></button>
   <button class="top-btn" id="topBtn" title="Lên đầu trang"><i class="bi bi-arrow-up"></i></button>
 
   <script>
-    const hamb=document.getElementById('hamb'),menu=document.getElementById('menu');
-    hamb.addEventListener('click',()=>menu.classList.toggle('open'));
-    const header=document.querySelector('.header'),links=document.querySelectorAll('[data-link]');
-    function smoothTo(id){const el=document.querySelector(id);if(!el)return;const y=el.getBoundingClientRect().top+window.pageYOffset-header.offsetHeight-6;window.scrollTo({top:y,behavior:'smooth'});}
-    links.forEach(a=>{a.addEventListener('click',e=>{const href=a.getAttribute('href');if(href.startsWith('#')){e.preventDefault();smoothTo(href);menu.classList.remove('open');}});});
-    const sections=['#home','#couple','#events','#gallery','#rsvp','#gifts'].map(id=>document.querySelector(id));
-    function onScroll(){const pos=window.scrollY+header.offsetHeight+20;let current=sections[0].id;for(const s of sections){if(s&&pos>=s.offsetTop)current=s.id;}document.querySelectorAll('.menu a').forEach(a=>{a.classList.toggle('active',a.getAttribute('href')==='#'+current);});document.getElementById('topBtn').classList.toggle('show',window.scrollY>600);}
-    window.addEventListener('scroll',onScroll);onScroll();
-    const target=new Date('2025-10-05T10:30:00+07:00').getTime();
-    const dd=document.getElementById('dd'),hh=document.getElementById('hh'),mm=document.getElementById('mm'),ss=document.getElementById('ss');
-    setInterval(()=>{const now=Date.now();let d=Math.max(0,target-now);const days=Math.floor(d/86400000);d%=86400000;const hrs=Math.floor(d/3600000);d%=3600000;const mins=Math.floor(d/60000);d%=60000;const secs=Math.floor(d/1000);dd.textContent=days;hh.textContent=hrs;mm.textContent=mins;ss.textContent=secs;},1000);
-    document.getElementById('topBtn').addEventListener('click',()=>smoothTo('#home'));
-    const bgm=document.getElementById('bgm'),musicBtn=document.getElementById('musicBtn');let playing=false;
-    function toggleMusic(){if(!playing){bgm.play().then(()=>{playing=true;musicBtn.innerHTML='<i class="bi bi-pause-fill"></i>';}).catch(()=>{});}else{bgm.pause();playing=false;musicBtn.innerHTML='<i class="bi bi-play-fill"></i>';}};
-    musicBtn.addEventListener('click',toggleMusic);
-    const form=document.getElementById('rsvpForm');
-    form.addEventListener('submit',e=>{e.preventDefault();document.getElementById('submitBtn').disabled=true;document.getElementById('msg').innerText="Cảm ơn bạn đã xác nhận!";});
+    // Utility: safe query
+    const $ = sel => document.querySelector(sel);
+    const $$ = sel => document.querySelectorAll(sel);
+
+    // Menu toggle (mobile)
+    const hamb = $('#hamb'), menu = $('#menu');
+    if (hamb && menu) hamb.addEventListener('click', () => menu.classList.toggle('open'));
+
+    // Smooth scroll
+    const header = document.querySelector('.header');
+    const links = $$('[data-link]');
+    function smoothTo(id){
+      const el = document.querySelector(id);
+      if (!el || !header) return;
+      const y = el.getBoundingClientRect().top + window.pageYOffset - header.offsetHeight - 6;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+    links.forEach(a => a.addEventListener('click', e => {
+      const href = a.getAttribute('href') || '';
+      if (href.startsWith('#')) { e.preventDefault(); smoothTo(href); if (menu) menu.classList.remove('open'); }
+    }));
+
+    // Section highlight + top button
+    const sectionIds = ['#home','#couple','#events','#gallery','#rsvp','#gifts'];
+    const sections = sectionIds.map(id => document.querySelector(id));
+    function onScroll(){
+      if (!header) return;
+      const pos = window.scrollY + header.offsetHeight + 20;
+      // find first existing section as default
+      let current = sections.find(s => s) ? sections.find(s => s).id : '';
+      for (const s of sections) {
+        if (s && pos >= s.offsetTop) current = s.id;
+      }
+      $$('.menu a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === ('#' + current)));
+      const topBtn = $('#topBtn');
+      if (topBtn) topBtn.classList.toggle('show', window.scrollY > 600);
+    }
+    window.addEventListener('scroll', onScroll);
+    onScroll();
+
+    // Countdown (safe: only run when elements exist)
+    (function initCountdown(){
+      const target = new Date('2025-10-05T10:30:00+07:00').getTime();
+      const dd = $('#dd'), hh = $('#hh'), mm = $('#mm'), ss = $('#ss');
+      if (!dd || !hh || !mm || !ss) return;
+      function tick(){
+        const now = Date.now();
+        let d = Math.max(0, target - now);
+        const days = Math.floor(d / 86400000);
+        d %= 86400000;
+        const hrs = Math.floor(d / 3600000);
+        d %= 3600000;
+        const mins = Math.floor(d / 60000);
+        d %= 60000;
+        const secs = Math.floor(d / 1000);
+        dd.textContent = days;
+        hh.textContent = hrs;
+        mm.textContent = mins;
+        ss.textContent = secs;
+      }
+      tick();
+      setInterval(tick, 1000);
+    })();
+
+    // Scroll to top
+    const topBtn = $('#topBtn');
+    if (topBtn) topBtn.addEventListener('click', () => smoothTo('#home'));
+
+    // Background music toggle (safe)
+    const bgm = $('#bgm'), musicBtn = $('#musicBtn');
+    let playing = false;
+    function toggleMusic(){
+      if (!bgm || !musicBtn) return;
+      if (!playing) {
+        bgm.play().then(()=> {
+          playing = true;
+          musicBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
+          musicBtn.setAttribute('aria-pressed','true');
+        }).catch(()=> {
+          // Autoplay might be blocked — leave icon unchanged
+        });
+      } else {
+        bgm.pause();
+        playing = false;
+        musicBtn.innerHTML = '<i class="bi bi-play-fill"></i>';
+        musicBtn.setAttribute('aria-pressed','false');
+      }
+    }
+    if (musicBtn) musicBtn.addEventListener('click', toggleMusic);
+
+    // RSVP form handling (safe)
+    const form = $('#rsvpForm');
+    if (form){
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const submitBtn = $('#submitBtn');
+        const msg = $('#msg');
+        if (submitBtn) submitBtn.disabled = true;
+        if (msg) msg.innerText = "Cảm ơn bạn đã xác nhận!";
+        // TODO: thêm gửi dữ liệu thật nếu cần (AJAX / liên kết server)
+        // Giả lập reset nút sau 2s (chỉ để UX khi test)
+        setTimeout(()=>{ if (submitBtn) submitBtn.disabled = false }, 2000);
+      });
+    }
   </script>
 </body>
 </html>
