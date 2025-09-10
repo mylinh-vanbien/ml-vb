@@ -111,9 +111,9 @@ body {
 .hero {
   position: relative;
   display: flex;
-  align-items: flex-end;  /* Đưa nội dung xuống đáy */
-  justify-content: center; /* Căn giữa ngang */
-  min-height: 100vh; /* Chiều cao full màn hình */
+  align-items: center;   /* Căn giữa theo chiều dọc */
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  min-height: 100vh; 
   background: url('your-image.jpg') no-repeat center center/cover;
   text-align: center;
   padding: 20px;
