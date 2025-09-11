@@ -16,10 +16,3 @@
   margin-right: 5%;    
   text-align: center;   /* căn giữa nội dung bên trong khối */
 }
-.qrcode {
-  width: 180px;       /* chỉnh cùng kích thước */
-  height: 180px;
-  object-fit: contain; /* giữ đúng tỉ lệ, không méo ảnh */
-  display: block;
-  margin: 0 auto;
-}
