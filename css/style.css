@@ -1,14 +1,10 @@
 .hero {
-  position: relative;
-  min-height: 60vh;
   display: flex;
-  align-items: center;        
-  justify-content: flex-end;  /* đẩy khối sang bên phải */
-  background: url('images/anhnen.jpg') center/cover no-repeat;
+  align-items: center;
+  justify-content: flex-start; /* căn về bên trái */
 }
-
 .hero .wrap.container {
-  transform: translateX(6cm);
+  transform: translateX(6cm);  /* dịch sang phải 6cm */
 }
 
 /* Lightbox */
