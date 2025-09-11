@@ -8,13 +8,7 @@
 }
 
 .hero .wrap.container {
-  position: relative;
-  z-index: 1;
-  color: #fff;
-  padding: 40px 16px;
-  max-width: 600px;    
-  margin-right: 5%;    
-  text-align: center;   /* căn giữa nội dung bên trong khối */
+  transform: translateX(6cm);
 }
 /* Lightbox */
 .lightbox {
