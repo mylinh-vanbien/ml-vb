@@ -1,3 +1,4 @@
+
 // Lightbox cho album
 const galleryImgs = document.querySelectorAll('#gallery .grid img');
 const lightbox = document.getElementById('lightbox');
