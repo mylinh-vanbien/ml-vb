@@ -250,6 +250,7 @@
       <img src="images/anh8.jpg" alt="Album 8">
     </div>
   </div>
+
   <style>
     .gallery-grid {
       display: grid;
@@ -262,7 +263,6 @@
       border-radius: 12px;
       cursor: pointer;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      display: block;
     }
     .gallery-grid img:hover {
       transform: scale(1.05);
@@ -275,12 +275,11 @@
   <script>
     (() => {
       const imgs = document.querySelectorAll('.gallery-grid img');
-      let currentIndex = 0, scale = 1;
-      let overlay = null, lightboxImg = null;
+      let currentIndex = 0;
+      let overlay, lightboxImg;
 
       function openLightbox(index) {
         currentIndex = index;
-        scale = 1;
 
         overlay = document.createElement('div');
         overlay.style.position = 'fixed';
@@ -288,11 +287,12 @@
         overlay.style.left = 0;
         overlay.style.width = '100%';
         overlay.style.height = '100%';
-        overlay.style.background = 'rgba(0,0,0,0.8)';
+        overlay.style.background = 'rgba(0,0,0,0.85)';
         overlay.style.display = 'flex';
         overlay.style.alignItems = 'center';
         overlay.style.justifyContent = 'center';
         overlay.style.cursor = 'zoom-out';
+        overlay.style.overflow = 'hidden';
         overlay.style.zIndex = 10000;
 
         lightboxImg = document.createElement('img');
@@ -300,60 +300,55 @@
         lightboxImg.style.maxWidth = '90%';
         lightboxImg.style.maxHeight = '90%';
         lightboxImg.style.borderRadius = '12px';
-        lightboxImg.style.transition = 'transform 0.3s ease';
+        lightboxImg.style.transition = 'transform 0.2s ease';
         overlay.appendChild(lightboxImg);
 
-        // Navigation buttons
+        // Next / Prev buttons
         const prevBtn = document.createElement('div');
         const nextBtn = document.createElement('div');
         [prevBtn, nextBtn].forEach(btn => {
           btn.style.position = 'absolute';
           btn.style.top = '50%';
           btn.style.transform = 'translateY(-50%)';
-          btn.style.fontSize = '40px';
+          btn.style.fontSize = '50px';
           btn.style.color = '#fff';
           btn.style.cursor = 'pointer';
           btn.style.userSelect = 'none';
           overlay.appendChild(btn);
         });
         prevBtn.style.left = '20px';
-        prevBtn.innerHTML = '&#8592;'; // ←
+        prevBtn.innerHTML = '&#8592;';
         nextBtn.style.right = '20px';
-        nextBtn.innerHTML = '&#8594;'; // →
+        nextBtn.innerHTML = '&#8594;';
 
         prevBtn.addEventListener('click', e => {
           e.stopPropagation();
           currentIndex = (currentIndex -1 + imgs.length)%imgs.length;
           lightboxImg.src = imgs[currentIndex].src;
-          scale = 1;
-          lightboxImg.style.transform = `scale(${scale})`;
         });
         nextBtn.addEventListener('click', e => {
           e.stopPropagation();
           currentIndex = (currentIndex +1)%imgs.length;
           lightboxImg.src = imgs[currentIndex].src;
-          scale = 1;
-          lightboxImg.style.transform = `scale(${scale})`;
         });
 
-        // Click to scale
-        lightboxImg.addEventListener('click', e => {
-          e.stopPropagation();
-          scale = 1.5;
-          lightboxImg.style.transform = `scale(${scale})`;
-        });
-
-        // Wheel to scroll image
-        lightboxImg.addEventListener('wheel', e => {
-          e.preventDefault();
-          const delta = e.deltaY;
+        // Hover zoom effect
+        overlay.addEventListener('mousemove', e => {
           const rect = lightboxImg.getBoundingClientRect();
-          lightboxImg.style.transform = `scale(${scale}) translateY(${delta*0.1}px)`;
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const px = x / rect.width;
+          const py = y / rect.height;
+          lightboxImg.style.transformOrigin = `${px*100}% ${py*100}%`;
+          lightboxImg.style.transform = `scale(2)`;
+        });
+        overlay.addEventListener('mouseleave', e => {
+          lightboxImg.style.transform = `scale(1)`;
         });
 
-        // Click outside image → close
-        overlay.addEventListener('click', () => {
-          overlay.remove();
+        // Click outside → close
+        overlay.addEventListener('click', e => {
+          if(e.target !== lightboxImg) overlay.remove();
         });
 
         document.body.appendChild(overlay);
