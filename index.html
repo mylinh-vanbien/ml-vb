@@ -266,7 +266,7 @@
     @media (max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:500px){.gallery-grid{grid-template-columns:1fr}}
 
-    /* Overlay toàn màn hình */
+    /* Overlay */
     .overlay {
       position: fixed;
       top:0; left:0; width:100%; height:100%;
@@ -294,14 +294,15 @@
       display:none;
       cursor:none;
       box-shadow:0 4px 10px rgba(0,0,0,0.3);
+      pointer-events:none;
     }
     .lens img {
       position: absolute;
-      width:200%;
-      height: auto;
+      transform: scale(2);
+      transform-origin: top left;
     }
 
-    /* Lightbox nav */
+    /* Nav */
     .lightbox-nav {
       position: absolute;
       top:50%;
@@ -319,7 +320,7 @@
     (() => {
       const imgs = document.querySelectorAll('.gallery-grid img');
       let currentIndex = 0;
-      let overlay, container, lens, lensImg;
+      let overlay, container, lens, lensImg, lightboxImg;
 
       function openLightbox(index){
         currentIndex = index;
@@ -330,7 +331,7 @@
         container = document.createElement('div');
         container.className='lightbox-container';
 
-        const lightboxImg = document.createElement('img');
+        lightboxImg = document.createElement('img');
         lightboxImg.src = imgs[currentIndex].src;
         container.appendChild(lightboxImg);
 
@@ -344,7 +345,7 @@
 
         overlay.appendChild(container);
 
-        // Next/Prev
+        // Nav
         const prevBtn = document.createElement('div');
         prevBtn.className='lightbox-nav prev';
         prevBtn.innerHTML='&#8592;';
@@ -354,7 +355,7 @@
         overlay.appendChild(prevBtn);
         overlay.appendChild(nextBtn);
 
-        // Lens theo chuột
+        // Lens move
         container.addEventListener('mousemove', e => {
           const rect = lightboxImg.getBoundingClientRect();
           const x = e.clientX - rect.left;
@@ -370,15 +371,15 @@
           lens.style.left = left + 'px';
           lens.style.top = top + 'px';
 
-          // Phóng to 2x
-          const zoomX = -left*2;
-          const zoomY = -top*2;
-          lensImg.style.left = zoomX + 'px';
-          lensImg.style.top = zoomY + 'px';
+          // Đặt ảnh phóng to trong lens
+          lensImg.style.left = (-left) + 'px';
+          lensImg.style.top = (-top) + 'px';
+          lensImg.style.width = rect.width*2 + 'px';
+          lensImg.style.height = rect.height*2 + 'px';
         });
         container.addEventListener('mouseleave', ()=> lens.style.display='none');
 
-        // Nút Prev/Next
+        // Prev/Next
         prevBtn.addEventListener('click', e=>{
           e.stopPropagation();
           currentIndex=(currentIndex-1+imgs.length)%imgs.length;
