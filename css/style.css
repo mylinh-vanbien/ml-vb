@@ -10,6 +10,7 @@
 .hero .wrap.container {
   transform: translateX(6cm);
 }
+
 /* Lightbox */
 .lightbox {
   position: fixed;
