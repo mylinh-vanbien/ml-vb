@@ -371,11 +371,27 @@
           lens.style.left = left + 'px';
           lens.style.top = top + 'px';
 
-          // Đặt ảnh phóng to trong lens
-          lensImg.style.left = (-left) + 'px';
-          lensImg.style.top = (-top) + 'px';
-          lensImg.style.width = rect.width*2 + 'px';
-          lensImg.style.height = rect.height*2 + 'px';
+          // Zoom theo ảnh overlay, điểm dưới chuột là tâm
+          const scale = 2;
+          const imgW = lightboxImg.width;
+          const imgH = lightboxImg.height;
+          const lensImgW = imgW * scale;
+          const lensImgH = imgH * scale;
+
+          const ratioX = lens.offsetWidth/scale;
+          const ratioY = lens.offsetHeight/scale;
+
+          let imgLeft = - (x*scale - lens.offsetWidth/2);
+          let imgTop = - (y*scale - lens.offsetHeight/2);
+
+          // Giới hạn ảnh trong lens
+          imgLeft = Math.min(0, Math.max(imgLeft, lens.offsetWidth - lensImgW));
+          imgTop = Math.min(0, Math.max(imgTop, lens.offsetHeight - lensImgH));
+
+          lensImg.style.width = lensImgW + 'px';
+          lensImg.style.height = lensImgH + 'px';
+          lensImg.style.left = imgLeft + 'px';
+          lensImg.style.top = imgTop + 'px';
         });
         container.addEventListener('mouseleave', ()=> lens.style.display='none');
 
