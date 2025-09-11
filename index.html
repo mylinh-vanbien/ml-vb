@@ -266,42 +266,41 @@
     @media (max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:500px){.gallery-grid{grid-template-columns:1fr}}
 
-    /* Lightbox overlay */
+    /* Overlay toàn màn hình */
     .overlay {
       position: fixed;
       top:0; left:0; width:100%; height:100%;
       background: rgba(0,0,0,0.85);
       display:flex; justify-content:center; align-items:center;
-      z-index:10000; cursor: default;
+      z-index:10000;
     }
-    .lightbox-img-container {
+    .lightbox-container {
       position: relative;
-      display: inline-block;
     }
-    .lightbox-img-container img {
+    .lightbox-container img {
       max-width:90vw;
       max-height:90vh;
       border-radius:12px;
       display:block;
     }
+
     /* Lens */
     .lens {
       position: absolute;
+      width:6cm; height:4cm;
       border:2px solid #fff;
-      width:6cm;   /* 6cm rộng */
-      height:4cm;  /* 4cm cao */
       border-radius:6px;
       overflow:hidden;
       display:none;
       cursor:none;
       box-shadow:0 4px 10px rgba(0,0,0,0.3);
-      z-index:10;
     }
     .lens img {
       position: absolute;
-      width:200%; /* zoom 2x */
+      width:200%;
       height: auto;
     }
+
     /* Lightbox nav */
     .lightbox-nav {
       position: absolute;
@@ -326,10 +325,10 @@
         currentIndex = index;
 
         overlay = document.createElement('div');
-        overlay.className = 'overlay';
+        overlay.className='overlay';
 
         container = document.createElement('div');
-        container.className = 'lightbox-img-container';
+        container.className='lightbox-container';
 
         const lightboxImg = document.createElement('img');
         lightboxImg.src = imgs[currentIndex].src;
@@ -337,7 +336,7 @@
 
         // Lens
         lens = document.createElement('div');
-        lens.className = 'lens';
+        lens.className='lens';
         lensImg = document.createElement('img');
         lensImg.src = imgs[currentIndex].src;
         lens.appendChild(lensImg);
@@ -345,7 +344,7 @@
 
         overlay.appendChild(container);
 
-        // Next / Prev
+        // Next/Prev
         const prevBtn = document.createElement('div');
         prevBtn.className='lightbox-nav prev';
         prevBtn.innerHTML='&#8592;';
@@ -355,7 +354,7 @@
         overlay.appendChild(prevBtn);
         overlay.appendChild(nextBtn);
 
-        // Lens di chuột
+        // Lens theo chuột
         container.addEventListener('mousemove', e => {
           const rect = lightboxImg.getBoundingClientRect();
           const x = e.clientX - rect.left;
@@ -365,21 +364,22 @@
           const lensW = lens.offsetWidth/2;
           const lensH = lens.offsetHeight/2;
 
-          // giới hạn lens trong ảnh
+          // Giới hạn lens trong ảnh
           let left = Math.max(0, Math.min(x-lensW, rect.width - lens.offsetWidth));
           let top = Math.max(0, Math.min(y-lensH, rect.height - lens.offsetHeight));
 
           lens.style.left = left + 'px';
           lens.style.top = top + 'px';
 
-          const zoomX = -left*2; // zoom 2x
+          // Phóng to 2x
+          const zoomX = -left*2;
           const zoomY = -top*2;
           lensImg.style.left = zoomX + 'px';
           lensImg.style.top = zoomY + 'px';
         });
         container.addEventListener('mouseleave', ()=> lens.style.display='none');
 
-        // Next/Prev
+        // Nút Prev/Next
         prevBtn.addEventListener('click', e=>{
           e.stopPropagation();
           currentIndex=(currentIndex-1+imgs.length)%imgs.length;
@@ -401,12 +401,11 @@
         document.body.appendChild(overlay);
       }
 
-      imgs.forEach((img, idx)=>{
-        img.addEventListener('click', ()=> openLightbox(idx));
-      });
+      imgs.forEach((img, idx)=> img.addEventListener('click', ()=> openLightbox(idx)));
     })();
   </script>
 </section>
+
 
   <!-- RSVP -->
   <section id="rsvp" style="background:#f7f7f7;padding:80px 0;">
