@@ -244,10 +244,6 @@
       <img src="images/anh2.jpg" alt="Album 2">
       <img src="images/anh3.jpg" alt="Album 3">
       <img src="images/anh4.jpg" alt="Album 4">
-      <img src="images/anh5.jpg" alt="Album 5">
-      <img src="images/anh6.jpg" alt="Album 6">
-      <img src="images/anh7.jpg" alt="Album 7">
-      <img src="images/anh8.jpg" alt="Album 8">
     </div>
   </div>
 
@@ -262,104 +258,155 @@
       height: auto;
       border-radius: 12px;
       cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease;
     }
     .gallery-grid img:hover {
       transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
     @media (max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
     @media (max-width:500px){.gallery-grid{grid-template-columns:1fr}}
+
+    /* Lightbox overlay */
+    .overlay {
+      position: fixed;
+      top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.85);
+      display:flex; justify-content:center; align-items:center;
+      z-index:10000; cursor: default;
+    }
+    .lightbox-img-container {
+      position: relative;
+      display: inline-block;
+    }
+    .lightbox-img-container img {
+      max-width:90vw;
+      max-height:90vh;
+      border-radius:12px;
+      display:block;
+    }
+    .lens {
+      position: absolute;
+      border:2px solid #fff;
+      width:150px;
+      height:150px;
+      border-radius:6px;
+      overflow:hidden;
+      display:none;
+      cursor: none;
+      box-shadow:0 4px 10px rgba(0,0,0,0.3);
+      z-index:10;
+    }
+    .lens img {
+      position: absolute;
+      width:200%; /* zoom 2x */
+      height: auto;
+    }
+    .lightbox-nav {
+      position: absolute;
+      top:50%;
+      font-size:50px;
+      color:#fff;
+      cursor:pointer;
+      user-select:none;
+      transform:translateY(-50%);
+    }
+    .prev { left:20px; }
+    .next { right:20px; }
   </style>
 
   <script>
     (() => {
       const imgs = document.querySelectorAll('.gallery-grid img');
       let currentIndex = 0;
-      let overlay, lightboxImg;
+      let overlay, container, lens, lensImg;
 
-      function openLightbox(index) {
+      function openLightbox(index){
         currentIndex = index;
 
         overlay = document.createElement('div');
-        overlay.style.position = 'fixed';
-        overlay.style.top = 0;
-        overlay.style.left = 0;
-        overlay.style.width = '100%';
-        overlay.style.height = '100%';
-        overlay.style.background = 'rgba(0,0,0,0.85)';
-        overlay.style.display = 'flex';
-        overlay.style.alignItems = 'center';
-        overlay.style.justifyContent = 'center';
-        overlay.style.cursor = 'zoom-out';
-        overlay.style.overflow = 'hidden';
-        overlay.style.zIndex = 10000;
+        overlay.className = 'overlay';
 
-        lightboxImg = document.createElement('img');
+        container = document.createElement('div');
+        container.className = 'lightbox-img-container';
+
+        const lightboxImg = document.createElement('img');
         lightboxImg.src = imgs[currentIndex].src;
-        lightboxImg.style.maxWidth = '90%';
-        lightboxImg.style.maxHeight = '90%';
-        lightboxImg.style.borderRadius = '12px';
-        lightboxImg.style.transition = 'transform 0.2s ease';
-        overlay.appendChild(lightboxImg);
+        container.appendChild(lightboxImg);
 
-        // Next / Prev buttons
+        // Lens
+        lens = document.createElement('div');
+        lens.className = 'lens';
+        lensImg = document.createElement('img');
+        lensImg.src = imgs[currentIndex].src;
+        lens.appendChild(lensImg);
+        container.appendChild(lens);
+
+        overlay.appendChild(container);
+
+        // Next / Prev
         const prevBtn = document.createElement('div');
+        prevBtn.className='lightbox-nav prev';
+        prevBtn.innerHTML='&#8592;';
         const nextBtn = document.createElement('div');
-        [prevBtn, nextBtn].forEach(btn => {
-          btn.style.position = 'absolute';
-          btn.style.top = '50%';
-          btn.style.transform = 'translateY(-50%)';
-          btn.style.fontSize = '50px';
-          btn.style.color = '#fff';
-          btn.style.cursor = 'pointer';
-          btn.style.userSelect = 'none';
-          overlay.appendChild(btn);
-        });
-        prevBtn.style.left = '20px';
-        prevBtn.innerHTML = '&#8592;';
-        nextBtn.style.right = '20px';
-        nextBtn.innerHTML = '&#8594;';
+        nextBtn.className='lightbox-nav next';
+        nextBtn.innerHTML='&#8594;';
+        overlay.appendChild(prevBtn);
+        overlay.appendChild(nextBtn);
 
-        prevBtn.addEventListener('click', e => {
-          e.stopPropagation();
-          currentIndex = (currentIndex -1 + imgs.length)%imgs.length;
-          lightboxImg.src = imgs[currentIndex].src;
-        });
-        nextBtn.addEventListener('click', e => {
-          e.stopPropagation();
-          currentIndex = (currentIndex +1)%imgs.length;
-          lightboxImg.src = imgs[currentIndex].src;
-        });
-
-        // Hover zoom effect
-        overlay.addEventListener('mousemove', e => {
+        // Show lens on mousemove
+        container.addEventListener('mousemove', e => {
           const rect = lightboxImg.getBoundingClientRect();
           const x = e.clientX - rect.left;
           const y = e.clientY - rect.top;
-          const px = x / rect.width;
-          const py = y / rect.height;
-          lightboxImg.style.transformOrigin = `${px*100}% ${py*100}%`;
-          lightboxImg.style.transform = `scale(2)`;
+
+          lens.style.display='block';
+          const lensW = lens.offsetWidth/2;
+          const lensH = lens.offsetHeight/2;
+
+          // clamp lens within image
+          let left = Math.max(0, Math.min(x-lensW, rect.width - lens.offsetWidth));
+          let top = Math.max(0, Math.min(y-lensH, rect.height - lens.offsetHeight));
+
+          lens.style.left = left + 'px';
+          lens.style.top = top + 'px';
+
+          const zoomX = -left*2; // zoom 2x
+          const zoomY = -top*2;
+          lensImg.style.left = zoomX + 'px';
+          lensImg.style.top = zoomY + 'px';
         });
-        overlay.addEventListener('mouseleave', e => {
-          lightboxImg.style.transform = `scale(1)`;
+
+        container.addEventListener('mouseleave', ()=> lens.style.display='none');
+
+        // Nav buttons
+        prevBtn.addEventListener('click', e=>{
+          e.stopPropagation();
+          currentIndex=(currentIndex-1+imgs.length)%imgs.length;
+          lightboxImg.src = imgs[currentIndex].src;
+          lensImg.src = imgs[currentIndex].src;
+        });
+        nextBtn.addEventListener('click', e=>{
+          e.stopPropagation();
+          currentIndex=(currentIndex+1)%imgs.length;
+          lightboxImg.src = imgs[currentIndex].src;
+          lensImg.src = imgs[currentIndex].src;
         });
 
         // Click outside → close
-        overlay.addEventListener('click', e => {
-          if(e.target !== lightboxImg) overlay.remove();
+        overlay.addEventListener('click', e=>{
+          if(e.target===overlay) overlay.remove();
         });
 
         document.body.appendChild(overlay);
       }
 
-      imgs.forEach((img, idx) => {
-        img.addEventListener('click', () => openLightbox(idx));
+      imgs.forEach((img, idx)=>{
+        img.addEventListener('click', ()=> openLightbox(idx));
       });
     })();
   </script>
 </section>
+
 
   <!-- RSVP -->
   <section id="rsvp" style="background:#f7f7f7;padding:80px 0;">
