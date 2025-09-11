@@ -3,16 +3,16 @@
   min-height: 60vh;
   display: flex;
   align-items: center;        
-  justify-content: flex-end;  /* đẩy khối sang phải */
+  justify-content: flex-end;  /* đẩy khối sang bên phải */
   background: url('images/anhnen.jpg') center/cover no-repeat;
 }
 
-.hero .wrap {
+.hero .wrap.container {
   position: relative;
   z-index: 1;
   color: #fff;
   padding: 40px 16px;
-  max-width: 600px;     /* chiều rộng khối */
-  margin-right: 5%;     /* cách mép phải */
+  max-width: 600px;    
+  margin-right: 5%;    
   text-align: center;   /* căn giữa nội dung bên trong khối */
 }
