@@ -35,13 +35,15 @@
     .hamb{display:none;font-size:24px;cursor:pointer}
 
     
-    /* Hero (đã sửa) */
+    
+    
+    /* Hero (đã chỉnh sang nửa phải + dịch thêm 3cm) */
     .hero {
       position: relative;
       min-height: 60vh;
-      display: flex;              /* dùng flex thay grid */
-      align-items: center;        /* căn giữa theo chiều dọc */
-      justify-content: flex-end;  /* đẩy khối sang bên phải */
+      display: flex;
+      align-items: center;        
+      justify-content: flex-start;
       background: url('images/anhnen.jpg') center/cover no-repeat;
     }
     .hero::after {
@@ -55,18 +57,21 @@
       z-index: 1;
       color: #fff;
       padding: 40px 16px;
-      max-width: 600px;      /* chỉnh chiều rộng khối */
-      margin-right: 5%;      /* cách mép phải 5% cho đẹp */
-      text-align: right;     /* chữ căn phải */
+      max-width: 600px;
+      margin-left: calc(50% + 226px); /* đẩy sang nửa phải + thêm 6cm */
+      transform: translateX(-50%);
+      text-align: center;
     }
     .hero .welcome{margin-bottom:10px;font-size:26px;line-height:2.6;font-family:'Playfair Display',serif}
     .hero .names{font-family:'Great Vibes',cursive;font-size:50px;line-height:1.2;margin:6px 0}
     .hero .lead{margin-top:10px;font-size:20px;color:#fff;line-height:2}
     .date-badge{display:inline-block;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);margin:6px 0}
-    .countdown{display:flex;gap:12px;justify-content:flex-end;margin-top:18px}
+    .countdown{display:flex;gap:12px;justify-content:center;margin-top:18px}
     .cd-box{min-width:70px;padding:10px 8px;border-radius:12px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35)}
     .cd-box .num{font-size:24px;font-weight:700}
     .cd-box .lbl{font-size:12px;opacity:.9}
+
+
 
 
     /* Countdown */
