@@ -34,45 +34,15 @@
     .menu a.active,.menu a:hover{background:var(--rose-2)}
     .hamb{display:none;font-size:24px;cursor:pointer}
 
-    
-    
-    
-    /* Hero (đã chỉnh sang nửa phải + dịch thêm 3cm) */
-    .hero {
-      position: relative;
-      min-height: 60vh;
-      display: flex;
-      align-items: center;        
-      justify-content: flex-start;
-      background: url('images/anhnen.jpg') center/cover no-repeat;
-    }
-    .hero::after {
-      content:"";
-      position:absolute;
-      inset:0;
-      background:linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,0,0,.35));
-    }
-    .hero .wrap {
-      position: relative;
-      z-index: 1;
-      color: #fff;
-      padding: 40px 16px;
-      max-width: 600px;
-      margin-left: calc(50% + 226px); /* đẩy sang nửa phải + thêm 6cm */
-      transform: translateX(-50%);
-      text-align: center;
-    }
+    /* Hero */
+    .hero{position:relative;min-height:60vh;display:grid;place-items:center;background:url('images/anhnen.jpg') center/cover no-repeat}
+    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,0,0,.35))}
+    .hero .wrap{position:relative;z-index:1;text-align:center;color:#fff;padding:40px 16px}
     .hero .welcome{margin-bottom:10px;font-size:26px;line-height:2.6;font-family:'Playfair Display',serif}
     .hero .names{font-family:'Great Vibes',cursive;font-size:50px;line-height:1.2;margin:6px 0}
     .hero .lead{margin-top:10px;font-size:20px;color:#fff;line-height:2}
+
     .date-badge{display:inline-block;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.35);margin:6px 0}
-    .countdown{display:flex;gap:12px;justify-content:center;margin-top:18px}
-    .cd-box{min-width:70px;padding:10px 8px;border-radius:12px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35)}
-    .cd-box .num{font-size:24px;font-weight:700}
-    .cd-box .lbl{font-size:12px;opacity:.9}
-
-
-
 
     /* Countdown */
     .countdown{display:flex;gap:12px;justify-content:center;margin-top:18px}
@@ -114,9 +84,37 @@
     .music-btn{bottom:78px}
     .top-btn{bottom:20px;opacity:0;pointer-events:none;transition:opacity .2s}
     .top-btn.show{opacity:1;pointer-events:auto}
-  </style>
+  
+/* Lightbox */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+.lightbox.show {
+  display: flex;
+}
+.lightbox img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,.5);
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 32px;
+  color: #fff;
+  cursor: pointer;
+}
+
+</style>
 </head>
-  <script src="js/main.js"></script>
 <body>
   <!-- Header -->
   <header class="header">
@@ -149,11 +147,17 @@
         <div class="cd-box"><div class="num" id="mm">54</div><div class="lbl">Phút</div></div>
         <div class="cd-box"><div class="num" id="ss">42</div><div class="lbl">Giây</div></div>
       </div>
-      <p class="lead">
-  Sự hiện diện của quý vị là niềm vinh dự <br> của gia đình chúng tôi
-</p>
+
+      <p class="lead">Sự hiện diện của quý vị là niềm vinh dự của gia đình chúng tôi</p>
     </div>
   </section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose">&times;</span>
+  <img id="lightboxImg" src="" alt="Xem ảnh lớn">
+</div>
+
 
   <!-- Couple -->
   <section id="couple">
@@ -252,11 +256,7 @@
       </div>
     </div>
   </section>
-  <!-- Lightbox -->
-<div class="lightbox" id="lightbox">
-  <span class="lightbox-close" id="lightboxClose">&times;</span>
-  <img id="lightboxImg" src="" alt="Xem ảnh lớn">
-</div>
+
   <!-- RSVP -->
   <section id="rsvp" style="background:#f7f7f7;padding:80px 0;">
   <div class="container" style="max-width:600px;margin:auto;">
@@ -415,6 +415,27 @@
       });
     }
   </script>
-  <script src="main.js"></script>
+
+<script>
+// Lightbox cho album
+const galleryImgs = document.querySelectorAll('#gallery .grid img');
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxClose = document.getElementById('lightboxClose');
+
+if (galleryImgs && lightbox && lightboxImg && lightboxClose) {
+  galleryImgs.forEach(img => {
+    img.addEventListener('click', () => {
+      lightboxImg.src = img.src;
+      lightbox.classList.add('show');
+    });
+  });
+  lightboxClose.addEventListener('click', () => lightbox.classList.remove('show'));
+  lightbox.addEventListener('click', e => {
+    if (e.target === lightbox) lightbox.classList.remove('show');
+  });
+}
+</script>
+
 </body>
 </html>
