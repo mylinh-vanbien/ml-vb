@@ -241,14 +241,14 @@
   <div class="container">
     <h2 style="color:#ff7eb9; text-align:center;">Wedding Photo Album</h2>
     <div class="gallery-grid">
-      <div class="gallery-item"><img src="images/anh1.jpg" alt="Album 1"></div>
-      <div class="gallery-item"><img src="images/anh2.jpg" alt="Album 2"></div>
-      <div class="gallery-item"><img src="images/anh3.jpg" alt="Album 3"></div>
-      <div class="gallery-item"><img src="images/anh4.jpg" alt="Album 4"></div>
-      <div class="gallery-item"><img src="images/anh5.jpg" alt="Album 5"></div>
-      <div class="gallery-item"><img src="images/anh6.jpg" alt="Album 6"></div>
-      <div class="gallery-item"><img src="images/anh7.jpg" alt="Album 7"></div>
-      <div class="gallery-item"><img src="images/anh8.jpg" alt="Album 8"></div>
+      <a href="images/anh1.jpg" class="gallery-item"><img src="images/anh1.jpg" alt="Album 1"></a>
+      <a href="images/anh2.jpg" class="gallery-item"><img src="images/anh2.jpg" alt="Album 2"></a>
+      <a href="images/anh3.jpg" class="gallery-item"><img src="images/anh3.jpg" alt="Album 3"></a>
+      <a href="images/anh4.jpg" class="gallery-item"><img src="images/anh4.jpg" alt="Album 4"></a>
+      <a href="images/anh5.jpg" class="gallery-item"><img src="images/anh5.jpg" alt="Album 5"></a>
+      <a href="images/anh6.jpg" class="gallery-item"><img src="images/anh6.jpg" alt="Album 6"></a>
+      <a href="images/anh7.jpg" class="gallery-item"><img src="images/anh7.jpg" alt="Album 7"></a>
+      <a href="images/anh8.jpg" class="gallery-item"><img src="images/anh8.jpg" alt="Album 8"></a>
     </div>
   </div>
   <style>
@@ -259,13 +259,13 @@
     }
     .gallery-item img {
       width: 100%;
-      height: 250px;
-      object-fit: cover;
+      height: auto; /* giữ nguyên tỉ lệ và kích thước ảnh gốc */
       border-radius: 12px;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       cursor: pointer;
+      display: block;
     }
-    .gallery-item img:hover {
+    .gallery-item:hover img {
       transform: scale(1.05);
       box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     }
@@ -274,11 +274,40 @@
     }
     @media (max-width: 500px) {
       .gallery-grid { grid-template-columns: 1fr; }
-      .gallery-item img { height: 200px; }
     }
   </style>
-</section>
 
+  <!-- Lightbox JS (không cần thư viện ngoài) -->
+  <script>
+    const items = document.querySelectorAll('.gallery-item');
+    items.forEach(item => {
+      item.addEventListener('click', e => {
+        e.preventDefault();
+        const src = item.getAttribute('href');
+        const lightbox = document.createElement('div');
+        lightbox.style.position = 'fixed';
+        lightbox.style.top = 0;
+        lightbox.style.left = 0;
+        lightbox.style.width = '100%';
+        lightbox.style.height = '100%';
+        lightbox.style.background = 'rgba(0,0,0,0.8)';
+        lightbox.style.display = 'flex';
+        lightbox.style.alignItems = 'center';
+        lightbox.style.justifyContent = 'center';
+        lightbox.style.cursor = 'zoom-out';
+        lightbox.style.zIndex = 10000;
+        const img = document.createElement('img');
+        img.src = src;
+        img.style.maxWidth = '90%';
+        img.style.maxHeight = '90%';
+        img.style.borderRadius = '12px';
+        lightbox.appendChild(img);
+        document.body.appendChild(lightbox);
+        lightbox.addEventListener('click', () => lightbox.remove());
+      });
+    });
+  </script>
+</section>
 
   <!-- RSVP -->
   <section id="rsvp" style="background:#f7f7f7;padding:80px 0;">
