@@ -1,34 +1,25 @@
 .hero {
+  position: relative;
+  min-height: 60vh;
   display: flex;
-  align-items: center;
-  justify-content: flex-start; /* căn về bên trái */
-}
-.hero .wrap.container {
-  transform: translateX(6cm);  /* dịch sang phải 6cm */
+  align-items: center;        
+  justify-content: flex-end;  /* đẩy khối sang bên phải */
+  background: url('images/anhnen.jpg') center/cover no-repeat;
 }
 
-/* Lightbox */
-.lightbox {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,.8);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 2000;
-}
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0,0,0,.5);
-}
-.lightbox.show { display: flex; }
-.lightbox-close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 32px;
+.hero .wrap.container {
+  position: relative;
+  z-index: 1;
   color: #fff;
-  cursor: pointer;
+  padding: 40px 16px;
+  max-width: 600px;    
+  margin-right: 5%;    
+  text-align: center;   /* căn giữa nội dung bên trong khối */
+}
+.qrcode {
+  width: 180px;       /* chỉnh cùng kích thước */
+  height: 180px;
+  object-fit: contain; /* giữ đúng tỉ lệ, không méo ảnh */
+  display: block;
+  margin: 0 auto;
 }
