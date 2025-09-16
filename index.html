@@ -147,19 +147,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh; /* full màn hình desktop */
-    background: url('your-image.jpg') no-repeat center center/cover;
+    min-height: 100vh; /* Chiếm toàn màn hình đứng */
+    background: url('images/anhnen.jpg') no-repeat center center/cover;
     text-align: center;
     padding: 20px;
     color: #fff;
   }
 
-  /* Overlay để chữ rõ hơn */
+  /* Lớp overlay để chữ dễ đọc hơn trên ảnh */
   .hero::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0, 0, 0, 0.4); /* chỉnh độ trong suốt nếu muốn */
     z-index: 1;
   }
 
@@ -178,7 +178,7 @@
     font-size: 1.25rem;
   }
 
-  /* Tablet */
+  /* Responsive cho máy tính bảng / màn hình nhỏ */
   @media (max-width: 768px) {
     .hero {
       min-height: 70vh;
@@ -186,23 +186,28 @@
       background-position: top center;
     }
     .hero h1 {
-      font-size: 2rem;
+      font-size: 2.25rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+    }
+  }
+
+  /* Responsive cho điện thoại nhỏ */
+  @media (max-width: 480px) {
+    .hero {
+      min-height: 60vh;
+      padding: 30px 10px;
+    }
+    .hero h1 {
+      font-size: 1.75rem;
     }
     .hero p {
       font-size: 1rem;
     }
   }
-
-  /* Điện thoại nhỏ */
-  @media (max-width: 480px) {
-    .hero h1 {
-      font-size: 1.5rem;
-    }
-    .hero p {
-      font-size: 0.9rem;
-    }
-  }
 </style>
+
 
   <!-- Hero -->
   <section class="hero" id="home" aria-label="Hero - Trang chủ">
