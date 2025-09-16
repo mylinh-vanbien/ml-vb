@@ -133,6 +133,76 @@
       <div class="hamb" id="hamb" aria-label="Mở menu"><i class="bi bi-list"></i></div>
     </div>
   </header>
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Mỹ Linh ❤ Văn Biền</h1>
+    <p>Chúng mình hân hoan mời bạn đến chung vui ngày trọng đại</p>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* full màn hình desktop */
+    background: url('your-image.jpg') no-repeat center center/cover;
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+  }
+
+  /* Overlay để chữ rõ hơn */
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 1.25rem;
+  }
+
+  /* Tablet */
+  @media (max-width: 768px) {
+    .hero {
+      min-height: 70vh;
+      padding: 40px 15px;
+      background-position: top center;
+    }
+    .hero h1 {
+      font-size: 2rem;
+    }
+    .hero p {
+      font-size: 1rem;
+    }
+  }
+
+  /* Điện thoại nhỏ */
+  @media (max-width: 480px) {
+    .hero h1 {
+      font-size: 1.5rem;
+    }
+    .hero p {
+      font-size: 0.9rem;
+    }
+  }
+</style>
 
   <!-- Hero -->
   <section class="hero" id="home" aria-label="Hero - Trang chủ">
