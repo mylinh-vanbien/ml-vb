@@ -53,15 +53,16 @@
       inset:0;
       background:linear-gradient(180deg,rgba(0,0,0,.30),rgba(0,0,0,.35));
     }
-    .hero .wrap {
-      position: relative;
-      z-index: 1;
-      color: #fff;
-      padding: 40px 16px;
-      max-width: 600px;
-      margin-left: calc(50% + 226px); /* đẩy sang nửa phải + thêm 6cm */
-      transform: translateX(-50%);
-      text-align: center;
+.hero .wrap {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  padding: 40px 16px;
+  max-width: 600px;
+  margin: 0 auto;       /* Căn giữa */
+  text-align: center;   /* Giữ chữ ở giữa */
+  transform: none;      /* Bỏ translate */
+}
     }
     .hero .welcome{margin-bottom:10px;font-size:26px;line-height:2.6;font-family:'Playfair Display',serif}
     .hero .names{font-family:'Great Vibes',cursive;font-size:50px;line-height:1.2;margin:6px 0}
